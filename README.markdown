@@ -1,3 +1,5 @@
+#CKImageAdditions
+
 CKImageAdditions is a collection of additional functions and methods for working with Core Graphics and UIImages on iOS.
 
 ##Currently supports
