@@ -15,7 +15,7 @@ Copy the ImageAdditions folder into your project, then #import the CKImageAdditi
 
 CKImageAdditions is licensed under the MIT license, which is reproduced in its entirety here:
 
->Copyright (c) 2010 Dave DeLong
+>Copyright (c) 2010 Cory Kilger
 >
 >Permission is hereby granted, free of charge, to any person obtaining a copy
 >of this software and associated documentation files (the "Software"), to deal
