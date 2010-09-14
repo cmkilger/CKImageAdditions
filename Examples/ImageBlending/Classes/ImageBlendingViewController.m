@@ -126,6 +126,4 @@
 	image.image = [UIImage imageByBlendingImage:topImage over:bottomImage withMode:mode.blendMode offset:CGPointMake(-2, -2)];
 }
 
-#pragma mark -
-
 @end

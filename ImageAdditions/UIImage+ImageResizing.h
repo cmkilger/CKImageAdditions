@@ -23,10 +23,8 @@
 
 #import <UIKit/UIImage.h>
 
-
 @interface UIImage (Resizing)
 
-- (UIImage *) aspectFittedImageForSize:(CGSize)size;
-- (UIImage *) aspectFilledImageForSize:(CGSize)size;
+- (UIImage *) imageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode;
 
 @end

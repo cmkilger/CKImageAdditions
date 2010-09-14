@@ -28,40 +28,43 @@
 
 @implementation UIImage (Resizing)
 
-- (UIImage *) aspectFittedImageForSize:(CGSize)size {
+- (UIImage *) imageWithSize:(CGSize)size contentMode:(UIViewContentMode)contentMode {
 	CGImageRef imgRef = self.CGImage;
 	CGFloat width = CGImageGetWidth(imgRef);
 	CGFloat height = CGImageGetHeight(imgRef);
 	
-	CGFloat scaleRatio = fminf(size.width/width, size.height/height);
-	CGPoint origin = CGPointMake((size.width-(width*scaleRatio))/2, (size.height-(height*scaleRatio))/2);
+	CGFloat xScaleRatio = 0.0;
+	CGFloat yScaleRatio = 0.0;
+	CGPoint origin = CGPointZero;
+	
+	switch (contentMode) {
+		case UIViewContentModeScaleAspectFit: {
+			xScaleRatio = fminf(size.width/width, size.height/height);
+			yScaleRatio = xScaleRatio;
+			origin = CGPointMake((size.width-(width*xScaleRatio))/2, (size.height-(height*yScaleRatio))/2);
+		} break;
+			
+		case UIViewContentModeScaleAspectFill: {
+			xScaleRatio = fmaxf(size.width/width, size.height/height);
+			yScaleRatio = xScaleRatio;
+			origin = CGPointMake((size.width-(width*xScaleRatio))/2, (size.height-(height*yScaleRatio))/2);
+		} break;
+			
+		default:
+			[NSException raise:@"CKUnimplementedContentModeException" format:@"The specified content mode has not yet been implemented."];
+			break;
+	}
+	
+	NSLog(@"Frame: %@; Size: %@; Origin: %@;",
+		  NSStringFromCGSize(size),
+		  NSStringFromCGSize(CGSizeMake(width*xScaleRatio, height*yScaleRatio)),
+		  NSStringFromCGPoint(origin));
 	
 	UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextScaleCTM(context, scaleRatio, -scaleRatio);
-	CGContextDrawImage(context, CGRectMake(origin.x, origin.y-height, width, height), imgRef);
-	
-	UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
-	
-	UIGraphicsEndImageContext();
-	
-	return image;
-}
-
-- (UIImage *) aspectFilledImageForSize:(CGSize)size {
-	CGImageRef imgRef = self.CGImage;
-	CGFloat width = CGImageGetWidth(imgRef);
-	CGFloat height = CGImageGetHeight(imgRef);
-	
-	CGFloat scaleRatio = fmaxf(size.width/width, size.height/height);
-	CGPoint origin = CGPointMake((size.width-(width*scaleRatio))/2, (size.height-(height*scaleRatio))/2);
-	
-	UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextScaleCTM(context, scaleRatio, -scaleRatio);
-	CGContextDrawImage(context, CGRectMake(origin.x, origin.y-height, width, height), imgRef);
+	CGContextScaleCTM(context, xScaleRatio, -yScaleRatio);
+	CGContextDrawImage(context, CGRectMake(origin.x, -(origin.y+height), width, height), imgRef);
 	
 	UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
 	
