@@ -41,24 +41,19 @@
 		case UIViewContentModeScaleAspectFit: {
 			xScaleRatio = fminf(size.width/width, size.height/height);
 			yScaleRatio = xScaleRatio;
-			origin = CGPointMake((size.width-(width*xScaleRatio))/2, (size.height-(height*yScaleRatio))/2);
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/xScaleRatio)-height)/2);
 		} break;
 			
 		case UIViewContentModeScaleAspectFill: {
 			xScaleRatio = fmaxf(size.width/width, size.height/height);
 			yScaleRatio = xScaleRatio;
-			origin = CGPointMake((size.width-(width*xScaleRatio))/2, (size.height-(height*yScaleRatio))/2);
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/xScaleRatio)-height)/2);
 		} break;
 			
 		default:
 			[NSException raise:@"CKUnimplementedContentModeException" format:@"The specified content mode has not yet been implemented."];
 			break;
 	}
-	
-	NSLog(@"Frame: %@; Size: %@; Origin: %@;",
-		  NSStringFromCGSize(size),
-		  NSStringFromCGSize(CGSizeMake(width*xScaleRatio, height*yScaleRatio)),
-		  NSStringFromCGPoint(origin));
 	
 	UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
 	
