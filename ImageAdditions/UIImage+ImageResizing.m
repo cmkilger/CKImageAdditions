@@ -22,6 +22,7 @@
  */
 
 #import <UIKit/UIGraphics.h>
+#import <UIKit/UIScreen.h>
 
 #import "UIImage+ImageResizing.h"
 

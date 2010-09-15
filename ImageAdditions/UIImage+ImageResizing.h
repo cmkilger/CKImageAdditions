@@ -22,6 +22,7 @@
  */
 
 #import <UIKit/UIImage.h>
+#import <UIKit/UIView.h>
 
 @interface UIImage (Resizing)
 
