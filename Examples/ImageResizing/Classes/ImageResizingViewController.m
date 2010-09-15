@@ -57,9 +57,18 @@
 	image = [UIImage imageNamed:@"poison_shield"];
 	
 	scaleModes = [[NSArray alloc] initWithObjects:
+				  [ScaleMode scaleModeWithName:@"Scale to Fill" mode:UIViewContentModeScaleToFill],
 				  [ScaleMode scaleModeWithName:@"Aspect Fit" mode:UIViewContentModeScaleAspectFit],
 				  [ScaleMode scaleModeWithName:@"Aspect Fill" mode:UIViewContentModeScaleAspectFill],
-				  [ScaleMode scaleModeWithName:@"Scale to Fill" mode:UIViewContentModeScaleToFill],
+				  [ScaleMode scaleModeWithName:@"Center" mode:UIViewContentModeCenter],
+				  [ScaleMode scaleModeWithName:@"Top" mode:UIViewContentModeTop],
+				  [ScaleMode scaleModeWithName:@"Bottom" mode:UIViewContentModeBottom],
+				  [ScaleMode scaleModeWithName:@"Left" mode:UIViewContentModeLeft],
+				  [ScaleMode scaleModeWithName:@"Right" mode:UIViewContentModeRight],
+				  [ScaleMode scaleModeWithName:@"Top Left" mode:UIViewContentModeTopLeft],
+				  [ScaleMode scaleModeWithName:@"Top Right" mode:UIViewContentModeTopRight],
+				  [ScaleMode scaleModeWithName:@"Bottom Left" mode:UIViewContentModeBottomLeft],
+				  [ScaleMode scaleModeWithName:@"Bottom Right" mode:UIViewContentModeBottomRight],
 				  nil];
 }
 

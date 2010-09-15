@@ -33,11 +33,17 @@
 	CGFloat width = CGImageGetWidth(imgRef);
 	CGFloat height = CGImageGetHeight(imgRef);
 	
-	CGFloat xScaleRatio = 0.0;
-	CGFloat yScaleRatio = 0.0;
+	CGFloat xScaleRatio = 1/[[UIScreen mainScreen] scale];
+	CGFloat yScaleRatio = 1/[[UIScreen mainScreen] scale];
 	CGPoint origin = CGPointZero;
 	
 	switch (contentMode) {
+		case UIViewContentModeScaleToFill: {
+			xScaleRatio = size.width/width;
+			yScaleRatio = size.height/height;
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/yScaleRatio)-height)/2);
+		} break;
+			
 		case UIViewContentModeScaleAspectFit: {
 			xScaleRatio = fminf(size.width/width, size.height/height);
 			yScaleRatio = xScaleRatio;
@@ -50,14 +56,44 @@
 			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/yScaleRatio)-height)/2);
 		} break;
 			
-		case UIViewContentModeScaleToFill: {
-			xScaleRatio = size.width/width;
-			yScaleRatio = size.height/height;
+		case UIViewContentModeCenter: {
 			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/yScaleRatio)-height)/2);
 		} break;
 			
+		case UIViewContentModeTop: {
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, 0);
+		} break;
+			
+		case UIViewContentModeBottom: {
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/yScaleRatio)-height));
+		} break;
+			
+		case UIViewContentModeLeft: {
+			origin = CGPointMake(0, ((size.height/yScaleRatio)-height)/2);
+		} break;
+			
+		case UIViewContentModeRight: {
+			origin = CGPointMake(((size.width/xScaleRatio)-width), ((size.height/yScaleRatio)-height)/2);
+		} break;
+			
+		case UIViewContentModeTopLeft: {
+		} break;
+			
+		case UIViewContentModeTopRight: {
+			origin = CGPointMake(((size.width/xScaleRatio)-width), 0);
+		} break;
+			
+		case UIViewContentModeBottomLeft: {
+			origin = CGPointMake(0, ((size.height/yScaleRatio)-height));
+		} break;
+			
+		case UIViewContentModeBottomRight: {
+			origin = CGPointMake(((size.width/xScaleRatio)-width), ((size.height/yScaleRatio)-height));
+		} break;
+			
+			
 		default:
-			[NSException raise:@"CKUnimplementedContentModeException" format:@"The specified content mode has not yet been implemented."];
+			[NSException raise:@"CKUnimplementedContentModeException" format:@"The specified content mode has not been implemented."];
 			break;
 	}
 	
