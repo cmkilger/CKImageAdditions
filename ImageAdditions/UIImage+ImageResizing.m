@@ -41,13 +41,19 @@
 		case UIViewContentModeScaleAspectFit: {
 			xScaleRatio = fminf(size.width/width, size.height/height);
 			yScaleRatio = xScaleRatio;
-			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/xScaleRatio)-height)/2);
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/yScaleRatio)-height)/2);
 		} break;
 			
 		case UIViewContentModeScaleAspectFill: {
 			xScaleRatio = fmaxf(size.width/width, size.height/height);
 			yScaleRatio = xScaleRatio;
-			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/xScaleRatio)-height)/2);
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/yScaleRatio)-height)/2);
+		} break;
+			
+		case UIViewContentModeScaleToFill: {
+			xScaleRatio = size.width/width;
+			yScaleRatio = size.height/height;
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/yScaleRatio)-height)/2);
 		} break;
 			
 		default:

@@ -59,6 +59,7 @@
 	scaleModes = [[NSArray alloc] initWithObjects:
 				  [ScaleMode scaleModeWithName:@"Aspect Fit" mode:UIViewContentModeScaleAspectFit],
 				  [ScaleMode scaleModeWithName:@"Aspect Fill" mode:UIViewContentModeScaleAspectFill],
+				  [ScaleMode scaleModeWithName:@"Scale to Fill" mode:UIViewContentModeScaleToFill],
 				  nil];
 }
 
