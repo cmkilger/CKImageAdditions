@@ -98,7 +98,9 @@ CGImageRef CGImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBl
 	CGContextDrawImage(context, CGRectOffset(topFrame, -renderFrame.origin.x, -renderFrame.origin.y), top);
 	
 	// Create image from context
-	return CGBitmapContextCreateImage(context);
+	CGImageRef blendedImage = CGBitmapContextCreateImage(context);
+	CGContextRelease(context);
+	return blendedImage;
 }
 
 #endif
