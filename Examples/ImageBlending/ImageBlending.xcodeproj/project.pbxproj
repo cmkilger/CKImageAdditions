@@ -19,9 +19,10 @@
 		8BC58992123951F80039F539 /* poison_shield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC5898E123951F80039F539 /* poison_shield@2x.png */; };
 		8BC58993123951F80039F539 /* red_shield_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC5898F123951F80039F539 /* red_shield_overlay.png */; };
 		8BC58994123951F80039F539 /* red_shield_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC58990123951F80039F539 /* red_shield_overlay@2x.png */; };
-		8BC58ACC123A973A0039F539 /* CoreGraphicsAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BC58AC8123A973A0039F539 /* CoreGraphicsAdditions.c */; };
-		8BC58ACD123A973A0039F539 /* UIImage+ImageBlending.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC58ACB123A973A0039F539 /* UIImage+ImageBlending.m */; };
-		9AAB5731123ED9A800E1BFC5 /* UIImage+ImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB5730123ED9A800E1BFC5 /* UIImage+ImageResizing.m */; };
+		9AA74036126A40EE003C9828 /* CoreGraphicsAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7402C126A40EE003C9828 /* CoreGraphicsAdditions.c */; };
+		9AA74037126A40EE003C9828 /* UIImage+ImageBlending.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7402F126A40EE003C9828 /* UIImage+ImageBlending.m */; };
+		9AA74038126A40EE003C9828 /* UIImage+ImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA74031126A40EE003C9828 /* UIImage+ImageResizing.m */; };
+		9AA7403A126A40EE003C9828 /* UIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA74035126A40EE003C9828 /* UIKitAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,14 +41,16 @@
 		8BC5898E123951F80039F539 /* poison_shield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poison_shield@2x.png"; sourceTree = "<group>"; };
 		8BC5898F123951F80039F539 /* red_shield_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_shield_overlay.png; sourceTree = "<group>"; };
 		8BC58990123951F80039F539 /* red_shield_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red_shield_overlay@2x.png"; sourceTree = "<group>"; };
-		8BC58AC8123A973A0039F539 /* CoreGraphicsAdditions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CoreGraphicsAdditions.c; sourceTree = "<group>"; };
-		8BC58AC9123A973A0039F539 /* CoreGraphicsAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreGraphicsAdditions.h; sourceTree = "<group>"; };
-		8BC58ACA123A973A0039F539 /* UIImage+ImageBlending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageBlending.h"; sourceTree = "<group>"; };
-		8BC58ACB123A973A0039F539 /* UIImage+ImageBlending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageBlending.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ImageBlending-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ImageBlending-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		9AAB5724123ED8EF00E1BFC5 /* CKImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKImageAdditions.h; sourceTree = "<group>"; };
-		9AAB572F123ED9A800E1BFC5 /* UIImage+ImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageResizing.h"; sourceTree = "<group>"; };
-		9AAB5730123ED9A800E1BFC5 /* UIImage+ImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageResizing.m"; sourceTree = "<group>"; };
+		9AA7402B126A40EE003C9828 /* CKImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKImageAdditions.h; sourceTree = "<group>"; };
+		9AA7402C126A40EE003C9828 /* CoreGraphicsAdditions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CoreGraphicsAdditions.c; sourceTree = "<group>"; };
+		9AA7402D126A40EE003C9828 /* CoreGraphicsAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreGraphicsAdditions.h; sourceTree = "<group>"; };
+		9AA7402E126A40EE003C9828 /* UIImage+ImageBlending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageBlending.h"; sourceTree = "<group>"; };
+		9AA7402F126A40EE003C9828 /* UIImage+ImageBlending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageBlending.m"; sourceTree = "<group>"; };
+		9AA74030126A40EE003C9828 /* UIImage+ImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageResizing.h"; sourceTree = "<group>"; };
+		9AA74031126A40EE003C9828 /* UIImage+ImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageResizing.m"; sourceTree = "<group>"; };
+		9AA74034126A40EE003C9828 /* UIKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitAdditions.h; sourceTree = "<group>"; };
+		9AA74035126A40EE003C9828 /* UIKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKitAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +89,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				8BC58AC7123A973A0039F539 /* ImageAdditions */,
+				9AA7402A126A40EE003C9828 /* ImageAdditions */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -128,20 +131,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8BC58AC7123A973A0039F539 /* ImageAdditions */ = {
+		9AA7402A126A40EE003C9828 /* ImageAdditions */ = {
 			isa = PBXGroup;
 			children = (
-				9AAB5724123ED8EF00E1BFC5 /* CKImageAdditions.h */,
-				8BC58AC9123A973A0039F539 /* CoreGraphicsAdditions.h */,
-				8BC58AC8123A973A0039F539 /* CoreGraphicsAdditions.c */,
-				8BC58ACA123A973A0039F539 /* UIImage+ImageBlending.h */,
-				8BC58ACB123A973A0039F539 /* UIImage+ImageBlending.m */,
-				9AAB572F123ED9A800E1BFC5 /* UIImage+ImageResizing.h */,
-				9AAB5730123ED9A800E1BFC5 /* UIImage+ImageResizing.m */,
+				9AA7402B126A40EE003C9828 /* CKImageAdditions.h */,
+				9AA7402C126A40EE003C9828 /* CoreGraphicsAdditions.c */,
+				9AA7402D126A40EE003C9828 /* CoreGraphicsAdditions.h */,
+				9AA7402E126A40EE003C9828 /* UIImage+ImageBlending.h */,
+				9AA7402F126A40EE003C9828 /* UIImage+ImageBlending.m */,
+				9AA74030126A40EE003C9828 /* UIImage+ImageResizing.h */,
+				9AA74031126A40EE003C9828 /* UIImage+ImageResizing.m */,
+				9AA74034126A40EE003C9828 /* UIKitAdditions.h */,
+				9AA74035126A40EE003C9828 /* UIKitAdditions.m */,
 			);
 			name = ImageAdditions;
 			path = ../../ImageAdditions;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -214,9 +219,10 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ImageBlendingAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ImageBlendingViewController.m in Sources */,
-				8BC58ACC123A973A0039F539 /* CoreGraphicsAdditions.c in Sources */,
-				8BC58ACD123A973A0039F539 /* UIImage+ImageBlending.m in Sources */,
-				9AAB5731123ED9A800E1BFC5 /* UIImage+ImageResizing.m in Sources */,
+				9AA74036126A40EE003C9828 /* CoreGraphicsAdditions.c in Sources */,
+				9AA74037126A40EE003C9828 /* UIImage+ImageBlending.m in Sources */,
+				9AA74038126A40EE003C9828 /* UIImage+ImageResizing.m in Sources */,
+				9AA7403A126A40EE003C9828 /* UIKitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +261,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -269,7 +275,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

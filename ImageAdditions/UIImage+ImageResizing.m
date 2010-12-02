@@ -25,6 +25,7 @@
 #import <UIKit/UIScreen.h>
 
 #import "UIImage+ImageResizing.h"
+#import "UIKitAdditions.h"
 
 
 @implementation UIImage (Resizing)
@@ -92,21 +93,19 @@
 			origin = CGPointMake(((size.width/xScaleRatio)-width), ((size.height/yScaleRatio)-height));
 		} break;
 			
-			
 		default:
 			[NSException raise:@"CKUnimplementedContentModeException" format:@"The specified content mode has not been implemented."];
 			break;
 	}
 	
 	UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextRef context = CKGraphicsImageContextCreateWithOptions(size, 2.0);
 	CGContextScaleCTM(context, xScaleRatio, -yScaleRatio);
 	CGContextDrawImage(context, CGRectMake(origin.x, -(origin.y+height), width, height), imgRef);
 	
-	UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
+	UIImage * image = CKGraphicsGetImageFromImageContext(context, 2.0);
 	
-	UIGraphicsEndImageContext();
+	CGContextRelease(context);
 	
 	return image;
 }

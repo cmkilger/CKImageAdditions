@@ -1,4 +1,4 @@
-/*  Created by Cory Kilger on 9/9/10.
+/*  Created by Cory Kilger on 10/16/10.
  *
  *	Copyright (c) 2010 Cory Kilger.
  *
@@ -21,20 +21,25 @@
  *	THE SOFTWARE.
  */
 
-#import "UIImage+ImageBlending.h"
+#import "UIKitAdditions.h"
 #import "CoreGraphicsAdditions.h"
 
-@implementation UIImage (ImageBlending)
-
-+ (UIImage *) imageByBlendingImage:(UIImage *)top over:(UIImage *)bottom withMode:(CGBlendMode)blendMode {
-	return [UIImage imageByBlendingImage:top over:bottom withMode:blendMode offset:CGPointZero];
+CGContextRef CKGraphicsImageContextCreateWithOptions(CGSize size, CGFloat scale) {
+	if (scale == 0)
+		scale = CK_SCREEN_SCALE_FACTOR;
+	size = CGSizeMake(size.width*scale, size.height*scale);
+	CGContextRef context = CKBitmapContextCreate(size);
+	CGContextScaleCTM(context, 1.0, -1.0);
+	CGContextTranslateCTM(context, 0.0, -size.height);
+	CGContextScaleCTM(context, scale, scale);
+	return context;
 }
 
-+ (UIImage *) imageByBlendingImage:(UIImage *)top over:(UIImage *)bottom withMode:(CGBlendMode)blendMode offset:(CGPoint)offset {
-	CGImageRef imageRef = CKImageCreateByBlendingImages(bottom.CGImage, top.CGImage, blendMode, offset);
-	UIImage * image = [UIImage imageWithCGImage:imageRef];
+UIImage * CKGraphicsGetImageFromImageContext(CGContextRef context, CGFloat scale) {
+	if (scale == 0)
+		scale = CK_SCREEN_SCALE_FACTOR;
+	CGImageRef imageRef = CGBitmapContextCreateImage(context);
+	UIImage * image = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
 	CGImageRelease(imageRef);
 	return image;
 }
-
-@end

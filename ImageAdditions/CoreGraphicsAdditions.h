@@ -27,13 +27,22 @@
 #include <CoreGraphics/CoreGraphics.h>
 
 /*!
-    @function
-    @abstract   Creates a bitmap context from an image.
-    @discussion This function is used to create a context from an image.  This is typically used to manipulate the image data.
-    @param      image The image from which to create a context.
-    @result     Returns a bitmap context which contains the image.
-*/
-CGContextRef CGBitmapContextCreateWithImage(CGImageRef image);
+ @function
+ @abstract   Creates a bitmap context with default settings.
+ @discussion This function is used to create a 32-bit RGBA bitmap context.
+ @param      image The image from which to create a context.
+ @result     Returns a bitmap context which contains the image.
+ */
+CGContextRef CKBitmapContextCreate(CGSize size);
+
+/*!
+ @function
+ @abstract   Creates a bitmap context from an image.
+ @discussion This function is used to create a context from an image.  This is typically used to manipulate the image data.
+ @param      image The image from which to create a context.
+ @result     Returns a bitmap context which contains the image.
+ */
+CGContextRef CKBitmapContextCreateWithImage(CGImageRef image);
 
 /*!
  @function
@@ -45,6 +54,8 @@ CGContextRef CGBitmapContextCreateWithImage(CGImageRef image);
  @param      offset The offset of the top image in relation to the bottom image.
  @result     Returns a CGImageRef of the resulting image.
  */
-CGImageRef CGImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBlendMode blendMode, CGPoint offset);
+CGImageRef CKImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBlendMode blendMode, CGPoint offset);
+
+CGPathRef CKPathCreateWithRoundedRect(CGRect rect, CGFloat radius);
 
 #endif

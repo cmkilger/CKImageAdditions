@@ -1,4 +1,4 @@
-/*  Created by Cory Kilger on 9/9/10.
+/*  Created by Cory Kilger on 10/16/10.
  *
  *	Copyright (c) 2010 Cory Kilger.
  *
@@ -21,20 +21,9 @@
  *	THE SOFTWARE.
  */
 
-#import "UIImage+ImageBlending.h"
-#import "CoreGraphicsAdditions.h"
+#import <UIKit/UIKit.h>
 
-@implementation UIImage (ImageBlending)
+#define CK_SCREEN_SCALE_FACTOR (([[UIScreen mainScreen] respondsToSelector:@selector(scale)])?[[UIScreen mainScreen] scale]:1.0)
 
-+ (UIImage *) imageByBlendingImage:(UIImage *)top over:(UIImage *)bottom withMode:(CGBlendMode)blendMode {
-	return [UIImage imageByBlendingImage:top over:bottom withMode:blendMode offset:CGPointZero];
-}
-
-+ (UIImage *) imageByBlendingImage:(UIImage *)top over:(UIImage *)bottom withMode:(CGBlendMode)blendMode offset:(CGPoint)offset {
-	CGImageRef imageRef = CKImageCreateByBlendingImages(bottom.CGImage, top.CGImage, blendMode, offset);
-	UIImage * image = [UIImage imageWithCGImage:imageRef];
-	CGImageRelease(imageRef);
-	return image;
-}
-
-@end
+CGContextRef CKGraphicsImageContextCreateWithOptions(CGSize size, CGFloat scale);
+UIImage * CKGraphicsGetImageFromImageContext(CGContextRef context, CGFloat scale);

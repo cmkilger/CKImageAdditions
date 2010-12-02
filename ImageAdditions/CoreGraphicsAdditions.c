@@ -30,13 +30,7 @@
 #include <stdio.h>
 #include <math.h>
 
-CGContextRef CGBitmapContextCreateWithImage(CGImageRef image) {
-	// Dimensions
-	size_t width = CGImageGetWidth(image);
-	size_t height = CGImageGetHeight(image);
-	
-	
-	// Create context	
+CGContextRef CKBitmapContextCreate(CGSize size) {
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 	if(colorSpace == NULL) {
 		printf("Error allocating color space.\n");
@@ -44,10 +38,10 @@ CGContextRef CGBitmapContextCreateWithImage(CGImageRef image) {
 	}
 	
 	CGContextRef context = CGBitmapContextCreate(NULL,
-												 width,
-												 height,
-												 8,      // bits per component
-												 width * 4,
+												 size.width,
+												 size.height,
+												 8,
+												 size.width * 4,
 												 colorSpace,
 												 kCGImageAlphaPremultipliedLast);
 	CGColorSpaceRelease(colorSpace);
@@ -57,39 +51,31 @@ CGContextRef CGBitmapContextCreateWithImage(CGImageRef image) {
 		return NULL;
 	}
 	
+	return context;
+}
+
+CGContextRef CKBitmapContextCreateWithImage(CGImageRef image) {
+	// Dimensions
+	size_t width = CGImageGetWidth(image);
+	size_t height = CGImageGetHeight(image);
+	
+	// Create context
+	CGContextRef context = CKBitmapContextCreate(CGSizeMake(width, height));
+	
 	// Draw image
 	CGContextDrawImage(context, CGRectMake(0, 0, width, height), image);
-	CGImageRelease(image);
 	
 	return context;
 }
 
-CGImageRef CGImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBlendMode blendMode, CGPoint offset) {
+CGImageRef CKImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBlendMode blendMode, CGPoint offset) {
 	// Dimensions
 	CGRect bottomFrame = CGRectMake(0, 0, CGImageGetWidth(bottom), CGImageGetHeight(bottom));
 	CGRect topFrame = CGRectMake(offset.x, offset.y, CGImageGetWidth(top), CGImageGetHeight(top));
 	CGRect renderFrame = CGRectIntegral(CGRectUnion(bottomFrame, topFrame));
 		
 	// Create context
-	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-	if(colorSpace == NULL) {
-		printf("Error allocating color space.\n");
-		return NULL;
-	}
-	
-	CGContextRef context = CGBitmapContextCreate(NULL,
-												 renderFrame.size.width,
-												 renderFrame.size.height,
-												 8,      // bits per component
-												 renderFrame.size.width * 4,
-												 colorSpace,
-												 kCGImageAlphaPremultipliedFirst);
-	CGColorSpaceRelease(colorSpace);
-	
-	if (context == NULL) {
-		printf("Context not created!\n");
-		return NULL;
-	}
+	CGContextRef context = CKBitmapContextCreate(renderFrame.size);
 	
 	// Draw images
 	CGContextSetBlendMode(context, kCGBlendModeNormal);
@@ -98,7 +84,26 @@ CGImageRef CGImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBl
 	CGContextDrawImage(context, CGRectOffset(topFrame, -renderFrame.origin.x, -renderFrame.origin.y), top);
 	
 	// Create image from context
-	return CGBitmapContextCreateImage(context);
+	CGImageRef image = CGBitmapContextCreateImage(context);
+	
+	// Cleanup
+	CGContextRelease(context);
+	
+	return image;
+}
+
+CGPathRef CKPathCreateWithRoundedRect(CGRect rect, CGFloat radius) {
+	CGMutablePathRef path = CGPathCreateMutable();
+	CGPathMoveToPoint(path, NULL, CGRectGetMinX(rect)+radius, CGRectGetMinY(rect));
+	CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(rect)-radius, CGRectGetMinY(rect));
+	CGPathAddArcToPoint(path, NULL, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect)+radius, radius);
+	CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(rect), CGRectGetMaxY(rect)-radius);
+	CGPathAddArcToPoint(path, NULL, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMaxX(rect)-radius, CGRectGetMaxY(rect), radius);
+	CGPathAddLineToPoint(path, NULL, CGRectGetMinX(rect)+radius, CGRectGetMaxY(rect));
+	CGPathAddArcToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect)-radius, radius);
+	CGPathAddLineToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMinY(rect)+radius);
+	CGPathAddArcToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMinX(rect)+radius, CGRectGetMinY(rect), radius);
+	return path;
 }
 
 #endif
