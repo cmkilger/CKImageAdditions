@@ -37,8 +37,7 @@
 	CGContextAddPath(context, roundedRect);
 	CGContextClip(context);
 	CGPathRelease(roundedRect);
-	CGContextScaleCTM(context, 1.0, -1.0);
-	CGContextDrawImage(context, CGRectMake(0, 0, CGRectGetWidth(rect), -CGRectGetHeight(rect)), self.CGImage);
+	CGContextDrawImage(context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)), self.CGImage);
 	
 	UIImage * image = CKGraphicsGetImageFromImageContext(context, 0);
 	

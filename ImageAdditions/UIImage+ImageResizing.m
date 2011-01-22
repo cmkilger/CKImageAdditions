@@ -63,11 +63,11 @@
 		} break;
 			
 		case UIViewContentModeTop: {
-			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, 0);
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/yScaleRatio)-height));
 		} break;
 			
 		case UIViewContentModeBottom: {
-			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, ((size.height/yScaleRatio)-height));
+			origin = CGPointMake(((size.width/xScaleRatio)-width)/2, 0);
 		} break;
 			
 		case UIViewContentModeLeft: {
@@ -79,18 +79,18 @@
 		} break;
 			
 		case UIViewContentModeTopLeft: {
-		} break;
-			
-		case UIViewContentModeTopRight: {
-			origin = CGPointMake(((size.width/xScaleRatio)-width), 0);
-		} break;
-			
-		case UIViewContentModeBottomLeft: {
 			origin = CGPointMake(0, ((size.height/yScaleRatio)-height));
 		} break;
 			
-		case UIViewContentModeBottomRight: {
+		case UIViewContentModeTopRight: {
 			origin = CGPointMake(((size.width/xScaleRatio)-width), ((size.height/yScaleRatio)-height));
+		} break;
+			
+		case UIViewContentModeBottomLeft: {
+		} break;
+			
+		case UIViewContentModeBottomRight: {
+			origin = CGPointMake(((size.width/xScaleRatio)-width), 0);
 		} break;
 			
 		default:
@@ -99,8 +99,8 @@
 	}
 	
 	CGContextRef context = CKGraphicsImageContextCreateWithOptions(size, 0);
-	CGContextScaleCTM(context, xScaleRatio, -yScaleRatio);
-	CGContextDrawImage(context, CGRectMake(origin.x, -(origin.y+height), width, height), imgRef);
+	CGContextScaleCTM(context, xScaleRatio, yScaleRatio);
+	CGContextDrawImage(context, CGRectMake(origin.x, origin.y, width, height), imgRef);
 	
 	UIImage * image = CKGraphicsGetImageFromImageContext(context, 0);
 	

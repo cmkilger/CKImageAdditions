@@ -29,8 +29,6 @@ CGContextRef CKGraphicsImageContextCreateWithOptions(CGSize size, CGFloat scale)
 		scale = CK_SCREEN_SCALE_FACTOR;
 	size = CGSizeMake(size.width*scale, size.height*scale);
 	CGContextRef context = CKBitmapContextCreate(size);
-	CGContextScaleCTM(context, 1.0, -1.0);
-	CGContextTranslateCTM(context, 0.0, -size.height);
 	CGContextScaleCTM(context, scale, scale);
 	return context;
 }
