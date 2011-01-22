@@ -98,12 +98,11 @@
 			break;
 	}
 	
-	UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
-	CGContextRef context = CKGraphicsImageContextCreateWithOptions(size, 2.0);
+	CGContextRef context = CKGraphicsImageContextCreateWithOptions(size, 0);
 	CGContextScaleCTM(context, xScaleRatio, -yScaleRatio);
 	CGContextDrawImage(context, CGRectMake(origin.x, -(origin.y+height), width, height), imgRef);
 	
-	UIImage * image = CKGraphicsGetImageFromImageContext(context, 2.0);
+	UIImage * image = CKGraphicsGetImageFromImageContext(context, 0);
 	
 	CGContextRelease(context);
 	
