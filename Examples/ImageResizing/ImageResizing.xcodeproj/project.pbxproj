@@ -15,6 +15,7 @@
 		2899E5220DE3E06400AC0155 /* ImageResizingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ImageResizingViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ImageResizingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ImageResizingViewController.m */; };
+		8BA94A9B12EA4B9A0049A1BA /* UIImage+ImageRounding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA94A9A12EA4B9A0049A1BA /* UIImage+ImageRounding.m */; };
 		8BC58C43123FDF930039F539 /* poison_shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC58C41123FDF930039F539 /* poison_shield.png */; };
 		8BC58C44123FDF930039F539 /* poison_shield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC58C42123FDF930039F539 /* poison_shield@2x.png */; };
 		9AA740A7126A48ED003C9828 /* CoreGraphicsAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7409D126A48ED003C9828 /* CoreGraphicsAdditions.c */; };
@@ -35,6 +36,8 @@
 		28D7ACF60DDB3853001CB0EB /* ImageResizingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageResizingViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* ImageResizingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageResizingViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8BA94A9912EA4B9A0049A1BA /* UIImage+ImageRounding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageRounding.h"; sourceTree = "<group>"; };
+		8BA94A9A12EA4B9A0049A1BA /* UIImage+ImageRounding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageRounding.m"; sourceTree = "<group>"; };
 		8BC58C41123FDF930039F539 /* poison_shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poison_shield.png; sourceTree = "<group>"; };
 		8BC58C42123FDF930039F539 /* poison_shield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poison_shield@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ImageResizing-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ImageResizing-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				9AA740A0126A48ED003C9828 /* UIImage+ImageBlending.m */,
 				9AA740A1126A48ED003C9828 /* UIImage+ImageResizing.h */,
 				9AA740A2126A48ED003C9828 /* UIImage+ImageResizing.m */,
+				8BA94A9912EA4B9A0049A1BA /* UIImage+ImageRounding.h */,
+				8BA94A9A12EA4B9A0049A1BA /* UIImage+ImageRounding.m */,
 				9AA740A5126A48ED003C9828 /* UIKitAdditions.h */,
 				9AA740A6126A48ED003C9828 /* UIKitAdditions.m */,
 			);
@@ -212,6 +217,7 @@
 				9AA740A8126A48ED003C9828 /* UIImage+ImageBlending.m in Sources */,
 				9AA740A9126A48ED003C9828 /* UIImage+ImageResizing.m in Sources */,
 				9AA740AB126A48ED003C9828 /* UIKitAdditions.m in Sources */,
+				8BA94A9B12EA4B9A0049A1BA /* UIImage+ImageRounding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

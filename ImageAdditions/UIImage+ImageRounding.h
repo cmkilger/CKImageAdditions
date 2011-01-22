@@ -1,6 +1,6 @@
-/*  Created by Cory Kilger on 9/13/10.
+/*  Created by Cory Kilger on 1/21/11.
  *
- *	Copyright (c) 2010 Cory Kilger.
+ *	Copyright (c) 2011 Cory Kilger.
  *
  *	Permission is hereby granted, free of charge, to any person obtaining a copy
  *	of this software and associated documentation files (the "Software"), to deal
@@ -21,8 +21,10 @@
  *	THE SOFTWARE.
  */
 
-#import "CoreGraphicsAdditions.h"
-#import "UIKitAdditions.h"
-#import "UIImage+ImageBlending.h"
-#import "UIImage+ImageResizing.h"
-#import "UIImage+ImageRounding.h"
+#import <UIKit/UIImage.h>
+
+@interface UIImage (ImageRounding)
+
+- (UIImage *) imageWithRoundedCorners:(CGFloat)radius;
+
+@end

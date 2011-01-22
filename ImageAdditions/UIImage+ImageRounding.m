@@ -1,6 +1,6 @@
-/*  Created by Cory Kilger on 9/13/10.
+/*  Created by Cory Kilger on 1/21/11.
  *
- *	Copyright (c) 2010 Cory Kilger.
+ *	Copyright (c) 2011 Cory Kilger.
  *
  *	Permission is hereby granted, free of charge, to any person obtaining a copy
  *	of this software and associated documentation files (the "Software"), to deal
@@ -21,8 +21,30 @@
  *	THE SOFTWARE.
  */
 
+#import "UIImage+ImageRounding.h"
 #import "CoreGraphicsAdditions.h"
 #import "UIKitAdditions.h"
-#import "UIImage+ImageBlending.h"
-#import "UIImage+ImageResizing.h"
-#import "UIImage+ImageRounding.h"
+
+
+@implementation UIImage (ImageRounding)
+
+- (UIImage *) imageWithRoundedCorners:(CGFloat)radius {
+	CGRect rect = CGRectZero;
+	rect.size = [self size];
+	
+	CGContextRef context = CKGraphicsImageContextCreateWithOptions(rect.size, 0);
+	CGPathRef roundedRect = CKPathCreateWithRoundedRect(rect, radius);
+	CGContextAddPath(context, roundedRect);
+	CGContextClip(context);
+	CGPathRelease(roundedRect);
+	CGContextScaleCTM(context, 1.0, -1.0);
+	CGContextDrawImage(context, CGRectMake(0, 0, CGRectGetWidth(rect), -CGRectGetHeight(rect)), self.CGImage);
+	
+	UIImage * image = CKGraphicsGetImageFromImageContext(context, 0);
+	
+	CGContextRelease(context);
+	
+	return image;
+}
+
+@end
