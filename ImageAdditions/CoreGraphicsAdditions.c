@@ -30,6 +30,9 @@
 #include <stdio.h>
 #include <math.h>
 
+#pragma mark -
+#pragma mark Contexts
+
 CGContextRef CKBitmapContextCreate(CGSize size) {
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 	if(colorSpace == NULL) {
@@ -68,6 +71,26 @@ CGContextRef CKBitmapContextCreateWithImage(CGImageRef image) {
 	return context;
 }
 
+#pragma mark -
+#pragma mark Paths
+
+CGPathRef CKPathCreateWithRoundedRect(CGRect rect, CGFloat radius) {
+	CGMutablePathRef path = CGPathCreateMutable();
+	CGPathMoveToPoint(path, NULL, CGRectGetMinX(rect)+radius, CGRectGetMinY(rect));
+	CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(rect)-radius, CGRectGetMinY(rect));
+	CGPathAddArcToPoint(path, NULL, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect)+radius, radius);
+	CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(rect), CGRectGetMaxY(rect)-radius);
+	CGPathAddArcToPoint(path, NULL, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMaxX(rect)-radius, CGRectGetMaxY(rect), radius);
+	CGPathAddLineToPoint(path, NULL, CGRectGetMinX(rect)+radius, CGRectGetMaxY(rect));
+	CGPathAddArcToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect)-radius, radius);
+	CGPathAddLineToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMinY(rect)+radius);
+	CGPathAddArcToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMinX(rect)+radius, CGRectGetMinY(rect), radius);
+	return path;
+}
+
+#pragma mark -
+#pragma mark Blending
+
 CGImageRef CKImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBlendMode blendMode, CGPoint offset) {
 	// Dimensions
 	CGRect bottomFrame = CGRectMake(0, 0, CGImageGetWidth(bottom), CGImageGetHeight(bottom));
@@ -92,18 +115,181 @@ CGImageRef CKImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBl
 	return image;
 }
 
-CGPathRef CKPathCreateWithRoundedRect(CGRect rect, CGFloat radius) {
-	CGMutablePathRef path = CGPathCreateMutable();
-	CGPathMoveToPoint(path, NULL, CGRectGetMinX(rect)+radius, CGRectGetMinY(rect));
-	CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(rect)-radius, CGRectGetMinY(rect));
-	CGPathAddArcToPoint(path, NULL, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMinY(rect)+radius, radius);
-	CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(rect), CGRectGetMaxY(rect)-radius);
-	CGPathAddArcToPoint(path, NULL, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMaxX(rect)-radius, CGRectGetMaxY(rect), radius);
-	CGPathAddLineToPoint(path, NULL, CGRectGetMinX(rect)+radius, CGRectGetMaxY(rect));
-	CGPathAddArcToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMaxY(rect)-radius, radius);
-	CGPathAddLineToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMinY(rect)+radius);
-	CGPathAddArcToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMinX(rect)+radius, CGRectGetMinY(rect), radius);
-	return path;
+#pragma mark -
+#pragma mark Trimming
+
+CGImageRef CKImageCreateByTrimmingTransparency(CGImageRef image, CKImageTrimmingSides sides) {
+	if (sides == CKImageTrimmingSidesNone)
+		return NULL;
+	
+	CGContextRef context = CKBitmapContextCreateWithImage(image);
+	
+	UInt32 * data = CGBitmapContextGetData(context);
+	if (!data) {
+		CGContextRelease(context);
+		return nil;
+	}
+		
+	size_t width = CGBitmapContextGetWidth(context);
+	size_t height = CGBitmapContextGetHeight(context);
+	
+	size_t top = 0;
+	size_t bottom = height;
+	size_t left = 0;
+	size_t right = width;
+	
+	// Scan the left
+	if (sides & CKImageTrimmingSidesLeft) {
+		for (size_t x = 0; x < width; x++) {
+			for (size_t y = 0; y < height; y++) {
+				if ((data[y*width+x] & 0x000000ff) != 0x00000000) {
+					left = x;
+					goto SCAN_TOP;
+				}
+			}
+		}
+	}
+	
+	// Scan the top
+SCAN_TOP:
+	if (sides & CKImageTrimmingSidesTop) {
+		for (size_t y = 0; y < height; y++) {
+			for (size_t x = 0; x < width; x++) {
+				if ((data[y*width+x] & 0x000000ff) != 0x00000000) {
+					top = y;
+					goto SCAN_RIGHT;
+				}
+			}
+		}
+	}
+	
+	// Scan the right
+SCAN_RIGHT:
+	if (sides & CKImageTrimmingSidesRight) {
+		for (size_t x = width-1; x >= left; x--) {
+			for (size_t y = 0; y < height; y++) {
+				if ((data[y*width+x] & 0x000000ff) != 0x00000000) {
+					right = x;
+					goto SCAN_BOTTOM;
+				}
+			}
+		}
+	}
+	
+	// Scan the bottom
+SCAN_BOTTOM:
+	if (sides & CKImageTrimmingSidesBottom) {
+		for (size_t y = height-1; y >= top; y--) {
+			for (size_t x = 0; x < width; x++) {
+				if ((data[y*width+x] & 0x000000ff) != 0x00000000) {
+					bottom = y;
+					goto FINISH;
+				}
+			}
+		}
+	}
+	
+FINISH:
+	
+	CGContextRelease(context);
+	
+	CGContextRef newContext = CKBitmapContextCreate(CGSizeMake(right-left+1, bottom-top+1));
+	CGRect rect = CGRectMake(-1.0*left, -1.0*(height-bottom), width, height);
+	CGContextDrawImage(newContext, rect, image);
+	CGImageRef newImage = CGBitmapContextCreateImage(newContext);
+	CGContextRelease(newContext);
+	
+	return newImage;
+}
+
+CGImageRef CKImageCreateByTrimmingColor(CGImageRef image, CGColorRef color, CKImageTrimmingSides sides) {
+	if (sides == CKImageTrimmingSidesNone)
+		return NULL;
+	
+	if (CGColorSpaceGetModel(CGColorGetColorSpace(color)) != kCGColorSpaceModelRGB)
+		return NULL;
+	
+	CGContextRef context = CKBitmapContextCreateWithImage(image);
+	
+	UInt32 * data = CGBitmapContextGetData(context);
+	if (!data) {
+		CGContextRelease(context);
+		return nil;
+	}
+	
+	const CGFloat * cgComponents = CGColorGetComponents(color);
+	UInt32 colorValue = (((UInt8)(cgComponents[0]*255)) << 24) + (((UInt8)(cgComponents[1]*255)) << 16) + (((UInt8)(cgComponents[2]*255)) << 8) + (((UInt8)(cgComponents[3]*255)) << 0);
+	
+	size_t width = CGBitmapContextGetWidth(context);
+	size_t height = CGBitmapContextGetHeight(context);
+	
+	size_t top = 0;
+	size_t bottom = height;
+	size_t left = 0;
+	size_t right = width;
+	
+	// Scan the left
+	if (sides & CKImageTrimmingSidesLeft) {
+		for (size_t x = 0; x < width; x++) {
+			for (size_t y = 0; y < height; y++) {
+				if (data[y*width+x] != colorValue) {
+					left = x;
+					goto SCAN_TOP;
+				}
+			}
+		}
+	}
+	
+	// Scan the top
+SCAN_TOP:
+	if (sides & CKImageTrimmingSidesTop) {
+		for (size_t y = 0; y < height; y++) {
+			for (size_t x = 0; x < width; x++) {
+				if (data[y*width+x] != colorValue) {
+					top = y;
+					goto SCAN_RIGHT;
+				}
+			}
+		}
+	}
+	
+	// Scan the right
+SCAN_RIGHT:
+	if (sides & CKImageTrimmingSidesRight) {
+		for (size_t x = width-1; x >= left; x--) {
+			for (size_t y = 0; y < height; y++) {
+				if (data[y*width+x] != colorValue) {
+					right = x;
+					goto SCAN_BOTTOM;
+				}
+			}
+		}
+	}
+	
+	// Scan the bottom
+SCAN_BOTTOM:
+	if (sides & CKImageTrimmingSidesBottom) {
+		for (size_t y = height-1; y >= top; y--) {
+			for (size_t x = 0; x < width; x++) {
+				if (data[y*width+x] != colorValue) {
+					bottom = y;
+					goto FINISH;
+				}
+			}
+		}
+	}
+	
+FINISH:
+	
+	CGContextRelease(context);
+	
+	CGContextRef newContext = CKBitmapContextCreate(CGSizeMake(right-left+1, bottom-top+1));
+	CGRect rect = CGRectMake(-1.0*left, -1.0*(height-bottom), width, height);
+	CGContextDrawImage(newContext, rect, image);
+	CGImageRef newImage = CGBitmapContextCreateImage(newContext);
+	CGContextRelease(newContext);
+	
+	return newImage;
 }
 
 #endif

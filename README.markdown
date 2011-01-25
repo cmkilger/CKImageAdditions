@@ -7,6 +7,7 @@ CKImageAdditions is a collection of additional functions and methods for working
 * Creating a new UIImage by blending one over another using one of many blend modes
 * Creating a new UIImage by resizing to fit in a specified CGSize using a content mode (any but redraw)
 * Creating a new UIImage by rounding the corners
+* Creating a new UIImage by trimming the sides based on transparency or a color
 * Creating a new bitmap CGContextRef from a CGImageRef
 
 ##Usage

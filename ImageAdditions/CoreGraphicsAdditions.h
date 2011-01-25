@@ -26,6 +26,9 @@
 
 #include <CoreGraphics/CoreGraphics.h>
 
+#pragma mark -
+#pragma mark Contexts
+
 /*!
  @function
  @abstract   Creates a bitmap context with default settings.
@@ -44,6 +47,14 @@ CGContextRef CKBitmapContextCreate(CGSize size);
  */
 CGContextRef CKBitmapContextCreateWithImage(CGImageRef image);
 
+#pragma mark -
+#pragma mark Paths
+
+CGPathRef CKPathCreateWithRoundedRect(CGRect rect, CGFloat radius);
+
+#pragma mark -
+#pragma mark Blending
+
 /*!
  @function
  @abstract   Creates a new image by bending one image on top of another.
@@ -56,6 +67,19 @@ CGContextRef CKBitmapContextCreateWithImage(CGImageRef image);
  */
 CGImageRef CKImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBlendMode blendMode, CGPoint offset);
 
-CGPathRef CKPathCreateWithRoundedRect(CGRect rect, CGFloat radius);
+#pragma mark -
+#pragma mark Trimming
+
+typedef enum {
+	CKImageTrimmingSidesNone   = 0,
+	CKImageTrimmingSidesTop    = 1 << 0,
+	CKImageTrimmingSidesBottom = 1 << 1,
+	CKImageTrimmingSidesLeft   = 1 << 2,
+	CKImageTrimmingSidesRight  = 1 << 3,
+	CKImageTrimmingSidesAll    = 0xF,
+} CKImageTrimmingSides;
+
+CGImageRef CKImageCreateByTrimmingTransparency(CGImageRef image, CKImageTrimmingSides sides);
+CGImageRef CKImageCreateByTrimmingColor(CGImageRef image, CGColorRef color, CKImageTrimmingSides sides);
 
 #endif
