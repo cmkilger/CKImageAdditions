@@ -7,7 +7,7 @@
 //
 
 #import "ImageTrimmingViewController.h"
-#import "UIImage+Trimming.h"
+#import "CKImageAdditions.h"
 
 @implementation ImageTrimmingViewController
 

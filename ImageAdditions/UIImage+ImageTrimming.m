@@ -21,18 +21,31 @@
  *	THE SOFTWARE.
  */
 
-#import <UIKit/UIImage.h>
-#import "CoreGraphicsAdditions.h"
+#import "UIImage+ImageTrimming.h"
 
-@interface UIImage (Trimming)
 
-// Sides can be combined using bitwise OR.
-- (UIImage *) imageByTrimmingTransparency;
-- (UIImage *) imageByTrimmingTransparencyOnSides:(CKImageTrimmingSides)sides;
+@implementation UIImage (ImageTrimming)
 
-// The color must use an RGB color space.
-- (UIImage *) imageByTrimmingColor:(UIColor *)color;
-- (UIImage *) imageByTrimmingColor:(UIColor *)color onSides:(CKImageTrimmingSides)sides;
+- (UIImage *) imageByTrimmingTransparency {
+	return [self imageByTrimmingTransparencyOnSides:CKImageTrimmingSidesAll];
+}
 
+- (UIImage *) imageByTrimmingTransparencyOnSides:(CKImageTrimmingSides)sides {
+	CGImageRef cgImage = CKImageCreateByTrimmingTransparency([self CGImage], sides);
+	UIImage * image = [UIImage imageWithCGImage:cgImage];
+	CGImageRelease(cgImage);
+	return image;
+}
+
+- (UIImage *) imageByTrimmingColor:(UIColor *)color {
+	return [self imageByTrimmingColor:color onSides:CKImageTrimmingSidesAll];
+}
+
+- (UIImage *) imageByTrimmingColor:(UIColor *)color onSides:(CKImageTrimmingSides)sides {
+	CGImageRef cgImage = CKImageCreateByTrimmingColor([self CGImage], [color CGColor], sides);
+	UIImage * image = [UIImage imageWithCGImage:cgImage];
+	CGImageRelease(cgImage);
+	return image;
+}
 
 @end

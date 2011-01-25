@@ -20,7 +20,7 @@
 		9AB84AD312EE7E5D00ABE4C1 /* UIImage+ImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB84ACC12EE7E5D00ABE4C1 /* UIImage+ImageResizing.m */; };
 		9AB84AD412EE7E5D00ABE4C1 /* UIImage+ImageRounding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB84ACE12EE7E5D00ABE4C1 /* UIImage+ImageRounding.m */; };
 		9AB84AD512EE7E5D00ABE4C1 /* UIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB84AD012EE7E5D00ABE4C1 /* UIKitAdditions.m */; };
-		9AB84AD912EE7E8D00ABE4C1 /* UIImage+Trimming.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB84AD812EE7E8D00ABE4C1 /* UIImage+Trimming.m */; };
+		9AB84AD912EE7E8D00ABE4C1 /* UIImage+ImageTrimming.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB84AD812EE7E8D00ABE4C1 /* UIImage+ImageTrimming.m */; };
 		9AB84B1512EE90B500ABE4C1 /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB84B1412EE90B500ABE4C1 /* test1.png */; };
 		9AB84B9012EE956300ABE4C1 /* test2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB84B8F12EE956300ABE4C1 /* test2.png */; };
 		9AB84C1912EE9C2D00ABE4C1 /* test3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB84C1812EE9C2D00ABE4C1 /* test3.png */; };
@@ -50,8 +50,8 @@
 		9AB84ACE12EE7E5D00ABE4C1 /* UIImage+ImageRounding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageRounding.m"; sourceTree = "<group>"; };
 		9AB84ACF12EE7E5D00ABE4C1 /* UIKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitAdditions.h; sourceTree = "<group>"; };
 		9AB84AD012EE7E5D00ABE4C1 /* UIKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKitAdditions.m; sourceTree = "<group>"; };
-		9AB84AD712EE7E8D00ABE4C1 /* UIImage+Trimming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Trimming.h"; sourceTree = "<group>"; };
-		9AB84AD812EE7E8D00ABE4C1 /* UIImage+Trimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Trimming.m"; sourceTree = "<group>"; };
+		9AB84AD712EE7E8D00ABE4C1 /* UIImage+ImageTrimming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageTrimming.h"; sourceTree = "<group>"; };
+		9AB84AD812EE7E8D00ABE4C1 /* UIImage+ImageTrimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageTrimming.m"; sourceTree = "<group>"; };
 		9AB84B1412EE90B500ABE4C1 /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
 		9AB84B8F12EE956300ABE4C1 /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test2.png; sourceTree = "<group>"; };
 		9AB84C1812EE9C2D00ABE4C1 /* test3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test3.png; sourceTree = "<group>"; };
@@ -146,8 +146,8 @@
 				9AB84ACC12EE7E5D00ABE4C1 /* UIImage+ImageResizing.m */,
 				9AB84ACD12EE7E5D00ABE4C1 /* UIImage+ImageRounding.h */,
 				9AB84ACE12EE7E5D00ABE4C1 /* UIImage+ImageRounding.m */,
-				9AB84AD712EE7E8D00ABE4C1 /* UIImage+Trimming.h */,
-				9AB84AD812EE7E8D00ABE4C1 /* UIImage+Trimming.m */,
+				9AB84AD712EE7E8D00ABE4C1 /* UIImage+ImageTrimming.h */,
+				9AB84AD812EE7E8D00ABE4C1 /* UIImage+ImageTrimming.m */,
 				9AB84ACF12EE7E5D00ABE4C1 /* UIKitAdditions.h */,
 				9AB84AD012EE7E5D00ABE4C1 /* UIKitAdditions.m */,
 			);
@@ -227,7 +227,7 @@
 				9AB84AD312EE7E5D00ABE4C1 /* UIImage+ImageResizing.m in Sources */,
 				9AB84AD412EE7E5D00ABE4C1 /* UIImage+ImageRounding.m in Sources */,
 				9AB84AD512EE7E5D00ABE4C1 /* UIKitAdditions.m in Sources */,
-				9AB84AD912EE7E8D00ABE4C1 /* UIImage+Trimming.m in Sources */,
+				9AB84AD912EE7E8D00ABE4C1 /* UIImage+ImageTrimming.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

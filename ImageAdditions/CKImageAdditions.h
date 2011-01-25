@@ -26,3 +26,4 @@
 #import "UIImage+ImageBlending.h"
 #import "UIImage+ImageResizing.h"
 #import "UIImage+ImageRounding.h"
+#import "UIImage+ImageTrimming.h"
