@@ -1,4 +1,4 @@
-/*  Created by Cory Kilger on 9/13/10.
+/*  Created by Cory Kilger on 2/1/11.
  *
  *	Copyright (c) 2010 Cory Kilger.
  *
@@ -21,10 +21,18 @@
  *	THE SOFTWARE.
  */
 
-#import "CoreGraphicsAdditions.h"
-#import "UIKitAdditions.h"
-#import "UIImage+ImageBlending.h"
-#import "UIImage+ImageColoring.h"
-#import "UIImage+ImageResizing.h"
-#import "UIImage+ImageRounding.h"
-#import "UIImage+ImageTrimming.h"
+#import <UIKit/UIImage.h>
+
+@interface UIImage (ImageColoring)
+
+/*!
+    @method     
+    @abstract   Creates a new image by adjusting the hue, saturation and lightness
+    @param      hue         The ammount to adjust the hue, in degrees.
+    @param      saturation  The ammount to adjust the saturation, +/- 100.
+    @param      lightness   The ammount to adjust the lightness, +/- 100.
+    @return     The adjusted image.
+*/
+- (UIImage *) imageByAdjustingHue:(CGFloat)hue saturation:(CGFloat)saturation lightness:(CGFloat)lightness;
+
+@end
