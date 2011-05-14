@@ -32,7 +32,11 @@
 
 - (UIImage *) imageByTrimmingTransparencyOnSides:(CKImageTrimmingSides)sides {
 	CGImageRef cgImage = CKImageCreateByTrimmingTransparency([self CGImage], sides);
-	UIImage * image = [UIImage imageWithCGImage:cgImage];
+	UIImage * image = nil;
+	if ([[UIImage class] respondsToSelector:@selector(imageWithCGImage:scale:orientation:)])
+		image = [UIImage imageWithCGImage:cgImage scale:[self scale] orientation:UIImageOrientationUp];
+	else
+		image = [UIImage imageWithCGImage:cgImage];
 	CGImageRelease(cgImage);
 	return image;
 }
@@ -43,7 +47,11 @@
 
 - (UIImage *) imageByTrimmingColor:(UIColor *)color onSides:(CKImageTrimmingSides)sides {
 	CGImageRef cgImage = CKImageCreateByTrimmingColor([self CGImage], [color CGColor], sides);
-	UIImage * image = [UIImage imageWithCGImage:cgImage];
+	UIImage * image = nil;
+	if ([[UIImage class] respondsToSelector:@selector(imageWithCGImage:scale:orientation:)])
+		image = [UIImage imageWithCGImage:cgImage scale:[self scale] orientation:UIImageOrientationUp];
+	else
+		image = [UIImage imageWithCGImage:cgImage];
 	CGImageRelease(cgImage);
 	return image;
 }

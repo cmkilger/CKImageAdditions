@@ -34,13 +34,23 @@
 #pragma mark Contexts
 
 CGContextRef CKBitmapContextCreate(CGSize size) {
+	return CKBitmapContextAndDataCreate(size, NULL);
+}
+
+CGContextRef CKBitmapContextAndDataCreate(CGSize size, void ** data) {
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 	if(colorSpace == NULL) {
 		printf("Error allocating color space.\n");
 		return NULL;
 	}
 	
-	CGContextRef context = CGBitmapContextCreate(NULL,
+	void * bitmapData = NULL;
+	if (data) {
+		bitmapData = malloc(size.width*size.height*4);
+		*data = bitmapData;
+	}
+	
+	CGContextRef context = CGBitmapContextCreate(bitmapData,
 												 size.width,
 												 size.height,
 												 8,
@@ -58,12 +68,16 @@ CGContextRef CKBitmapContextCreate(CGSize size) {
 }
 
 CGContextRef CKBitmapContextCreateWithImage(CGImageRef image) {
+	return CKBitmapContextAndDataCreateWithImage(image, NULL);
+}
+
+CGContextRef CKBitmapContextAndDataCreateWithImage(CGImageRef image, void ** data) {
 	// Dimensions
 	size_t width = CGImageGetWidth(image);
 	size_t height = CGImageGetHeight(image);
 	
 	// Create context
-	CGContextRef context = CKBitmapContextCreate(CGSizeMake(width, height));
+	CGContextRef context = CKBitmapContextAndDataCreate(CGSizeMake(width, height), data);
 	
 	// Draw image
 	CGContextDrawImage(context, CGRectMake(0, 0, width, height), image);
@@ -98,7 +112,8 @@ CGImageRef CKImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBl
 	CGRect renderFrame = CGRectIntegral(CGRectUnion(bottomFrame, topFrame));
 		
 	// Create context
-	CGContextRef context = CKBitmapContextCreate(renderFrame.size);
+	void * data = NULL;
+	CGContextRef context = CKBitmapContextAndDataCreate(renderFrame.size, &data);
 	
 	// Draw images
 	CGContextSetBlendMode(context, kCGBlendModeNormal);
@@ -111,6 +126,7 @@ CGImageRef CKImageCreateByBlendingImages(CGImageRef bottom, CGImageRef top, CGBl
 	
 	// Cleanup
 	CGContextRelease(context);
+	free(data);
 	
 	return image;
 }
@@ -122,13 +138,10 @@ CGImageRef CKImageCreateByTrimmingTransparency(CGImageRef image, CKImageTrimming
 	if (sides == CKImageTrimmingSidesNone)
 		return NULL;
 	
-	CGContextRef context = CKBitmapContextCreateWithImage(image);
+	void * bitmapData = NULL;
+	CGContextRef context = CKBitmapContextAndDataCreateWithImage(image, &bitmapData);
 	
-	UInt32 * data = CGBitmapContextGetData(context);
-	if (!data) {
-		CGContextRelease(context);
-		return nil;
-	}
+	UInt32 * data = bitmapData;
 		
 	size_t width = CGBitmapContextGetWidth(context);
 	size_t height = CGBitmapContextGetHeight(context);
@@ -190,14 +203,16 @@ SCAN_BOTTOM:
 	}
 	
 FINISH:
-	
 	CGContextRelease(context);
+	free(bitmapData);
 	
-	CGContextRef newContext = CKBitmapContextCreate(CGSizeMake(right-left+1, bottom-top+1));
+	void * newData = NULL;
+	CGContextRef newContext = CKBitmapContextAndDataCreate(CGSizeMake(right-left+1, bottom-top+1), &newData);
 	CGRect rect = CGRectMake(-1.0*left, -1.0*(height-bottom), width, height);
 	CGContextDrawImage(newContext, rect, image);
 	CGImageRef newImage = CGBitmapContextCreateImage(newContext);
 	CGContextRelease(newContext);
+	free(newData);
 	
 	return newImage;
 }
@@ -209,13 +224,10 @@ CGImageRef CKImageCreateByTrimmingColor(CGImageRef image, CGColorRef color, CKIm
 	if (CGColorSpaceGetModel(CGColorGetColorSpace(color)) != kCGColorSpaceModelRGB)
 		return NULL;
 	
-	CGContextRef context = CKBitmapContextCreateWithImage(image);
+	void * bitmapData = NULL;
+	CGContextRef context = CKBitmapContextAndDataCreateWithImage(image, &bitmapData);
 	
-	UInt32 * data = CGBitmapContextGetData(context);
-	if (!data) {
-		CGContextRelease(context);
-		return nil;
-	}
+	UInt32 * data = bitmapData;
 	
 	const CGFloat * cgComponents = CGColorGetComponents(color);
 	UInt32 colorValue = (((UInt8)(cgComponents[0]*255)) << 24) + (((UInt8)(cgComponents[1]*255)) << 16) + (((UInt8)(cgComponents[2]*255)) << 8) + (((UInt8)(cgComponents[3]*255)) << 0);
@@ -280,14 +292,16 @@ SCAN_BOTTOM:
 	}
 	
 FINISH:
-	
 	CGContextRelease(context);
+	free(bitmapData);
 	
-	CGContextRef newContext = CKBitmapContextCreate(CGSizeMake(right-left+1, bottom-top+1));
+	void * newData = NULL;
+	CGContextRef newContext = CKBitmapContextAndDataCreate(CGSizeMake(right-left+1, bottom-top+1), &newData);
 	CGRect rect = CGRectMake(-1.0*left, -1.0*(height-bottom), width, height);
 	CGContextDrawImage(newContext, rect, image);
 	CGImageRef newImage = CGBitmapContextCreateImage(newContext);
 	CGContextRelease(newContext);
+	free(newData);
 	
 	return newImage;
 }

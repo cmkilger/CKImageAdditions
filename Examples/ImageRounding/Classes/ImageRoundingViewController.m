@@ -14,7 +14,7 @@
 @synthesize image, imageView, label, slider;
 
 - (void) awakeFromNib {
-	image = [UIImage imageNamed:@"ninja_disguise"];
+	image = [UIImage imageNamed:@"ninja_disguise.png"];
 }
 
 #pragma mark Memory Management

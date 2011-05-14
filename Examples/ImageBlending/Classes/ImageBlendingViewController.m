@@ -52,8 +52,8 @@
 @synthesize image, picker;
 
 - (void) awakeFromNib {
-	bottomImage = [UIImage imageNamed:@"poison_shield"];
-	topImage = [UIImage imageNamed:@"red_shield_overlay"];
+	bottomImage = [UIImage imageNamed:@"poison_shield.png"];
+	topImage = [UIImage imageNamed:@"red_shield_overlay.png"];
 
 	blendModes = [[NSArray alloc] initWithObjects:
 				  [BlendMode blendModeWithName:@"Normal" mode:kCGBlendModeNormal],

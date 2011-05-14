@@ -54,7 +54,7 @@
 @synthesize image, imageView1, imageView2, picker;
 
 - (void) awakeFromNib {
-	image = [UIImage imageNamed:@"poison_shield"];
+	image = [UIImage imageNamed:@"poison_shield.png"];
 	
 	scaleModes = [[NSArray alloc] initWithObjects:
 				  [ScaleMode scaleModeWithName:@"Scale to Fill" mode:UIViewContentModeScaleToFill],

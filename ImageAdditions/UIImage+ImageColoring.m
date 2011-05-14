@@ -126,9 +126,11 @@ static inline void HSLToRGB(CGFloat h, CGFloat s, CGFloat l, CGFloat * r, CGFloa
 	if (hue < 0)
 		hue += 1.0;
 	
-	CGContextRef context = CKBitmapContextCreateWithImage([self CGImage]);
+	void * bitmapData = NULL;
+	CGContextRef context = CKBitmapContextAndDataCreateWithImage([self CGImage], &bitmapData);
 	
-	UInt32 * data = CGBitmapContextGetData(context);
+	UInt32 * data = bitmapData;
+	
 	size_t width = CGBitmapContextGetWidth(context);
 	size_t height = CGBitmapContextGetHeight(context);
 	
@@ -163,10 +165,15 @@ static inline void HSLToRGB(CGFloat h, CGFloat s, CGFloat l, CGFloat * r, CGFloa
 	}
 	
 	CGImageRef newImage = CGBitmapContextCreateImage(context);
-	UIImage * image = [UIImage imageWithCGImage:newImage];
+	UIImage * image = nil;
+	if ([[UIImage class] respondsToSelector:@selector(imageWithCGImage:scale:orientation:)])
+		image = [UIImage imageWithCGImage:newImage scale:[self scale] orientation:UIImageOrientationUp];
+	else
+		image = [UIImage imageWithCGImage:newImage];
 	
 	CGImageRelease(newImage);
 	CGContextRelease(context);
+	free(bitmapData);
 	
 	return image;
 }

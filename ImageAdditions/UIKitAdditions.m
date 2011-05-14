@@ -23,6 +23,7 @@
 
 #import "UIKitAdditions.h"
 #import "CoreGraphicsAdditions.h"
+#import "UIImage+ImageResizing.h"
 
 CGContextRef CKGraphicsImageContextCreateWithOptions(CGSize size, CGFloat scale) {
 	if (scale == 0)
@@ -37,7 +38,11 @@ UIImage * CKGraphicsGetImageFromImageContext(CGContextRef context, CGFloat scale
 	if (scale == 0)
 		scale = CK_SCREEN_SCALE_FACTOR;
 	CGImageRef imageRef = CGBitmapContextCreateImage(context);
-	UIImage * image = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
+	UIImage * image = nil;
+	if ([[UIImage class] respondsToSelector:@selector(imageWithCGImage:scale:orientation:)])
+		image = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
+	else
+		image = [UIImage imageWithCGImage:imageRef];
 	CGImageRelease(imageRef);
 	return image;
 }

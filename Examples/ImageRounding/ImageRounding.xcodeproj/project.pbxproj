@@ -248,6 +248,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "ImageRounding-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = ImageRounding;
 			};
 			name = Debug;
@@ -260,6 +261,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ImageRounding_Prefix.pch;
 				INFOPLIST_FILE = "ImageRounding-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = ImageRounding;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -35,8 +35,12 @@
 	CGFloat width = CGImageGetWidth(imgRef);
 	CGFloat height = CGImageGetHeight(imgRef);
 	
-	CGFloat xScaleRatio = 1/[[UIScreen mainScreen] scale];
-	CGFloat yScaleRatio = 1/[[UIScreen mainScreen] scale];
+	CGFloat xScaleRatio = 1.0;
+	CGFloat yScaleRatio = 1.0;
+	if ([self respondsToSelector:@selector(scale)]) {
+		xScaleRatio /= [self scale];
+		yScaleRatio /= [self scale];
+	}
 	CGPoint origin = CGPointZero;
 	
 	switch (contentMode) {

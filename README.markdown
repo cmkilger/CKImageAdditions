@@ -1,6 +1,6 @@
 #CKImageAdditions
 
-CKImageAdditions is a collection of additional functions and methods for working with Core Graphics and UIImages on iOS.
+CKImageAdditions is a collection of additional functions and methods for working with Core Graphics and UIImages on iOS 3.0+.
 
 ##Features
 
@@ -13,7 +13,7 @@ CKImageAdditions is a collection of additional functions and methods for working
 
 ##Usage
 
-Copy the ImageAdditions folder into your project, then #import the CKImageAdditions.h header file.
+Copy the ImageAdditions folder into your project, then #import the CKImageAdditions.h header file.  Please refer to the examples for more information.
 
 ##License
 

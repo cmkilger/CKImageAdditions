@@ -32,7 +32,11 @@
 
 + (UIImage *) imageByBlendingImage:(UIImage *)top over:(UIImage *)bottom withMode:(CGBlendMode)blendMode offset:(CGPoint)offset {
 	CGImageRef imageRef = CKImageCreateByBlendingImages(bottom.CGImage, top.CGImage, blendMode, offset);
-	UIImage * image = [UIImage imageWithCGImage:imageRef];
+	UIImage * image = nil;
+	if ([[UIImage class] respondsToSelector:@selector(imageWithCGImage:scale:orientation:)])
+		image = [UIImage imageWithCGImage:imageRef scale:[top scale] orientation:UIImageOrientationUp];
+	else
+		image = [UIImage imageWithCGImage:imageRef];
 	CGImageRelease(imageRef);
 	return image;
 }
