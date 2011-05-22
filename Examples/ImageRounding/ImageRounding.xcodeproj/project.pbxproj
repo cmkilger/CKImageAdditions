@@ -15,15 +15,9 @@
 		2899E5220DE3E06400AC0155 /* ImageRoundingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ImageRoundingViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ImageRoundingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ImageRoundingViewController.m */; };
-		8B7013AD12F87DA30048371B /* CoreGraphicsAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B70139F12F87DA30048371B /* CoreGraphicsAdditions.c */; };
-		8B7013AE12F87DA30048371B /* UIImage+ImageBlending.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013A212F87DA30048371B /* UIImage+ImageBlending.m */; };
-		8B7013AF12F87DA30048371B /* UIImage+ImageColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013A412F87DA30048371B /* UIImage+ImageColoring.m */; };
-		8B7013B012F87DA30048371B /* UIImage+ImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013A612F87DA30048371B /* UIImage+ImageResizing.m */; };
-		8B7013B112F87DA30048371B /* UIImage+ImageRounding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013A812F87DA30048371B /* UIImage+ImageRounding.m */; };
-		8B7013B212F87DA30048371B /* UIImage+ImageTrimming.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013AA12F87DA30048371B /* UIImage+ImageTrimming.m */; };
-		8B7013B312F87DA30048371B /* UIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7013AC12F87DA30048371B /* UIKitAdditions.m */; };
 		8BA94A5912EA48370049A1BA /* ninja_disguise.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA94A5712EA48370049A1BA /* ninja_disguise.png */; };
 		8BA94A5A12EA48370049A1BA /* ninja_disguise@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA94A5812EA48370049A1BA /* ninja_disguise@2x.png */; };
+		9A12A82213888E510029554D /* libImageAdditions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A12A82113888E510029554D /* libImageAdditions.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,24 +32,10 @@
 		28D7ACF60DDB3853001CB0EB /* ImageRoundingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageRoundingViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* ImageRoundingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRoundingViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8B70139E12F87DA30048371B /* CKImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKImageAdditions.h; sourceTree = "<group>"; };
-		8B70139F12F87DA30048371B /* CoreGraphicsAdditions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CoreGraphicsAdditions.c; sourceTree = "<group>"; };
-		8B7013A012F87DA30048371B /* CoreGraphicsAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreGraphicsAdditions.h; sourceTree = "<group>"; };
-		8B7013A112F87DA30048371B /* UIImage+ImageBlending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageBlending.h"; sourceTree = "<group>"; };
-		8B7013A212F87DA30048371B /* UIImage+ImageBlending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageBlending.m"; sourceTree = "<group>"; };
-		8B7013A312F87DA30048371B /* UIImage+ImageColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageColoring.h"; sourceTree = "<group>"; };
-		8B7013A412F87DA30048371B /* UIImage+ImageColoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageColoring.m"; sourceTree = "<group>"; };
-		8B7013A512F87DA30048371B /* UIImage+ImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageResizing.h"; sourceTree = "<group>"; };
-		8B7013A612F87DA30048371B /* UIImage+ImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageResizing.m"; sourceTree = "<group>"; };
-		8B7013A712F87DA30048371B /* UIImage+ImageRounding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageRounding.h"; sourceTree = "<group>"; };
-		8B7013A812F87DA30048371B /* UIImage+ImageRounding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageRounding.m"; sourceTree = "<group>"; };
-		8B7013A912F87DA30048371B /* UIImage+ImageTrimming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageTrimming.h"; sourceTree = "<group>"; };
-		8B7013AA12F87DA30048371B /* UIImage+ImageTrimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageTrimming.m"; sourceTree = "<group>"; };
-		8B7013AB12F87DA30048371B /* UIKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitAdditions.h; sourceTree = "<group>"; };
-		8B7013AC12F87DA30048371B /* UIKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKitAdditions.m; sourceTree = "<group>"; };
 		8BA94A5712EA48370049A1BA /* ninja_disguise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ninja_disguise.png; sourceTree = "<group>"; };
 		8BA94A5812EA48370049A1BA /* ninja_disguise@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ninja_disguise@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ImageRounding-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ImageRounding-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9A12A82113888E510029554D /* libImageAdditions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libImageAdditions.a; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A12A82213888E510029554D /* libImageAdditions.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -94,7 +75,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				8B70139D12F87DA30048371B /* ImageAdditions */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -127,35 +107,13 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A12A82113888E510029554D /* libImageAdditions.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
-		};
-		8B70139D12F87DA30048371B /* ImageAdditions */ = {
-			isa = PBXGroup;
-			children = (
-				8B70139E12F87DA30048371B /* CKImageAdditions.h */,
-				8B70139F12F87DA30048371B /* CoreGraphicsAdditions.c */,
-				8B7013A012F87DA30048371B /* CoreGraphicsAdditions.h */,
-				8B7013A112F87DA30048371B /* UIImage+ImageBlending.h */,
-				8B7013A212F87DA30048371B /* UIImage+ImageBlending.m */,
-				8B7013A312F87DA30048371B /* UIImage+ImageColoring.h */,
-				8B7013A412F87DA30048371B /* UIImage+ImageColoring.m */,
-				8B7013A512F87DA30048371B /* UIImage+ImageResizing.h */,
-				8B7013A612F87DA30048371B /* UIImage+ImageResizing.m */,
-				8B7013A712F87DA30048371B /* UIImage+ImageRounding.h */,
-				8B7013A812F87DA30048371B /* UIImage+ImageRounding.m */,
-				8B7013A912F87DA30048371B /* UIImage+ImageTrimming.h */,
-				8B7013AA12F87DA30048371B /* UIImage+ImageTrimming.m */,
-				8B7013AB12F87DA30048371B /* UIKitAdditions.h */,
-				8B7013AC12F87DA30048371B /* UIKitAdditions.m */,
-			);
-			name = ImageAdditions;
-			path = ../../ImageAdditions;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -226,13 +184,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ImageRoundingAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ImageRoundingViewController.m in Sources */,
-				8B7013AD12F87DA30048371B /* CoreGraphicsAdditions.c in Sources */,
-				8B7013AE12F87DA30048371B /* UIImage+ImageBlending.m in Sources */,
-				8B7013AF12F87DA30048371B /* UIImage+ImageColoring.m in Sources */,
-				8B7013B012F87DA30048371B /* UIImage+ImageResizing.m in Sources */,
-				8B7013B112F87DA30048371B /* UIImage+ImageRounding.m in Sources */,
-				8B7013B212F87DA30048371B /* UIImage+ImageTrimming.m in Sources */,
-				8B7013B312F87DA30048371B /* UIKitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,8 +198,13 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../../ImageAdditions\"";
 				INFOPLIST_FILE = "ImageRounding-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = ImageRounding;
 			};
 			name = Debug;
@@ -260,8 +216,13 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ImageRounding_Prefix.pch;
+				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../../ImageAdditions\"";
 				INFOPLIST_FILE = "ImageRounding-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = ImageRounding;
 				VALIDATE_PRODUCT = YES;
 			};

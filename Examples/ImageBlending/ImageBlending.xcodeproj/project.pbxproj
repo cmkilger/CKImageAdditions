@@ -15,17 +15,11 @@
 		2899E5220DE3E06400AC0155 /* ImageBlendingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ImageBlendingViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ImageBlendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ImageBlendingViewController.m */; };
-		8B70137912F87D7E0048371B /* CoreGraphicsAdditions.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B70136B12F87D7E0048371B /* CoreGraphicsAdditions.c */; };
-		8B70137A12F87D7E0048371B /* UIImage+ImageBlending.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B70136E12F87D7E0048371B /* UIImage+ImageBlending.m */; };
-		8B70137B12F87D7E0048371B /* UIImage+ImageColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B70137012F87D7E0048371B /* UIImage+ImageColoring.m */; };
-		8B70137C12F87D7E0048371B /* UIImage+ImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B70137212F87D7E0048371B /* UIImage+ImageResizing.m */; };
-		8B70137D12F87D7E0048371B /* UIImage+ImageRounding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B70137412F87D7E0048371B /* UIImage+ImageRounding.m */; };
-		8B70137E12F87D7E0048371B /* UIImage+ImageTrimming.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B70137612F87D7E0048371B /* UIImage+ImageTrimming.m */; };
-		8B70137F12F87D7E0048371B /* UIKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B70137812F87D7E0048371B /* UIKitAdditions.m */; };
 		8BC58991123951F80039F539 /* poison_shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC5898D123951F80039F539 /* poison_shield.png */; };
 		8BC58992123951F80039F539 /* poison_shield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC5898E123951F80039F539 /* poison_shield@2x.png */; };
 		8BC58993123951F80039F539 /* red_shield_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC5898F123951F80039F539 /* red_shield_overlay.png */; };
 		8BC58994123951F80039F539 /* red_shield_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC58990123951F80039F539 /* red_shield_overlay@2x.png */; };
+		9A12A81C13888E030029554D /* libImageAdditions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A12A81B13888E030029554D /* libImageAdditions.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,26 +34,12 @@
 		28D7ACF60DDB3853001CB0EB /* ImageBlendingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBlendingViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* ImageBlendingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBlendingViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8B70136A12F87D7E0048371B /* CKImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKImageAdditions.h; sourceTree = "<group>"; };
-		8B70136B12F87D7E0048371B /* CoreGraphicsAdditions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CoreGraphicsAdditions.c; sourceTree = "<group>"; };
-		8B70136C12F87D7E0048371B /* CoreGraphicsAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreGraphicsAdditions.h; sourceTree = "<group>"; };
-		8B70136D12F87D7E0048371B /* UIImage+ImageBlending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageBlending.h"; sourceTree = "<group>"; };
-		8B70136E12F87D7E0048371B /* UIImage+ImageBlending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageBlending.m"; sourceTree = "<group>"; };
-		8B70136F12F87D7E0048371B /* UIImage+ImageColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageColoring.h"; sourceTree = "<group>"; };
-		8B70137012F87D7E0048371B /* UIImage+ImageColoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageColoring.m"; sourceTree = "<group>"; };
-		8B70137112F87D7E0048371B /* UIImage+ImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageResizing.h"; sourceTree = "<group>"; };
-		8B70137212F87D7E0048371B /* UIImage+ImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageResizing.m"; sourceTree = "<group>"; };
-		8B70137312F87D7E0048371B /* UIImage+ImageRounding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageRounding.h"; sourceTree = "<group>"; };
-		8B70137412F87D7E0048371B /* UIImage+ImageRounding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageRounding.m"; sourceTree = "<group>"; };
-		8B70137512F87D7E0048371B /* UIImage+ImageTrimming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageTrimming.h"; sourceTree = "<group>"; };
-		8B70137612F87D7E0048371B /* UIImage+ImageTrimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageTrimming.m"; sourceTree = "<group>"; };
-		8B70137712F87D7E0048371B /* UIKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitAdditions.h; sourceTree = "<group>"; };
-		8B70137812F87D7E0048371B /* UIKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKitAdditions.m; sourceTree = "<group>"; };
 		8BC5898D123951F80039F539 /* poison_shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poison_shield.png; sourceTree = "<group>"; };
 		8BC5898E123951F80039F539 /* poison_shield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poison_shield@2x.png"; sourceTree = "<group>"; };
 		8BC5898F123951F80039F539 /* red_shield_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_shield_overlay.png; sourceTree = "<group>"; };
 		8BC58990123951F80039F539 /* red_shield_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red_shield_overlay@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ImageBlending-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ImageBlending-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9A12A81B13888E030029554D /* libImageAdditions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libImageAdditions.a; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A12A81C13888E030029554D /* libImageAdditions.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -98,7 +79,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				8B70136912F87D7E0048371B /* ImageAdditions */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -133,35 +113,13 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A12A81B13888E030029554D /* libImageAdditions.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
-		};
-		8B70136912F87D7E0048371B /* ImageAdditions */ = {
-			isa = PBXGroup;
-			children = (
-				8B70136A12F87D7E0048371B /* CKImageAdditions.h */,
-				8B70136B12F87D7E0048371B /* CoreGraphicsAdditions.c */,
-				8B70136C12F87D7E0048371B /* CoreGraphicsAdditions.h */,
-				8B70136D12F87D7E0048371B /* UIImage+ImageBlending.h */,
-				8B70136E12F87D7E0048371B /* UIImage+ImageBlending.m */,
-				8B70136F12F87D7E0048371B /* UIImage+ImageColoring.h */,
-				8B70137012F87D7E0048371B /* UIImage+ImageColoring.m */,
-				8B70137112F87D7E0048371B /* UIImage+ImageResizing.h */,
-				8B70137212F87D7E0048371B /* UIImage+ImageResizing.m */,
-				8B70137312F87D7E0048371B /* UIImage+ImageRounding.h */,
-				8B70137412F87D7E0048371B /* UIImage+ImageRounding.m */,
-				8B70137512F87D7E0048371B /* UIImage+ImageTrimming.h */,
-				8B70137612F87D7E0048371B /* UIImage+ImageTrimming.m */,
-				8B70137712F87D7E0048371B /* UIKitAdditions.h */,
-				8B70137812F87D7E0048371B /* UIKitAdditions.m */,
-			);
-			name = ImageAdditions;
-			path = ../../ImageAdditions;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -234,13 +192,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ImageBlendingAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ImageBlendingViewController.m in Sources */,
-				8B70137912F87D7E0048371B /* CoreGraphicsAdditions.c in Sources */,
-				8B70137A12F87D7E0048371B /* UIImage+ImageBlending.m in Sources */,
-				8B70137B12F87D7E0048371B /* UIImage+ImageColoring.m in Sources */,
-				8B70137C12F87D7E0048371B /* UIImage+ImageResizing.m in Sources */,
-				8B70137D12F87D7E0048371B /* UIImage+ImageRounding.m in Sources */,
-				8B70137E12F87D7E0048371B /* UIImage+ImageTrimming.m in Sources */,
-				8B70137F12F87D7E0048371B /* UIKitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,8 +205,13 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../../ImageAdditions\"";
 				INFOPLIST_FILE = "ImageBlending-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = ImageBlending;
 			};
 			name = Debug;
@@ -265,8 +221,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../../ImageAdditions\"";
 				INFOPLIST_FILE = "ImageBlending-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = ImageBlending;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../ImageAdditions.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ImageBlending/ImageBlending.xcodeproj">
    </FileRef>
    <FileRef
