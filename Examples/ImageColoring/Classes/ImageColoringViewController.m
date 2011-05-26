@@ -8,6 +8,7 @@
 
 #import "ImageColoringViewController.h"
 #import "CKImageAdditions.h"
+#import "ImageColoringCircleOverlay.h"
 
 @implementation ImageColoringViewController
 
@@ -15,6 +16,8 @@
 @synthesize hueLabel, hueSlider;
 @synthesize saturationLabel, saturationSlider;
 @synthesize lightnessLabel, lightnessSlider;
+@synthesize averageColorLabel, averageColorSlider, averageColorView;
+@synthesize overlay;
 
 - (void) awakeFromNib {
 	self.image = [UIImage imageNamed:@"prince_angry.png"];
@@ -37,6 +40,10 @@
 	self.saturationSlider = nil;
 	self.lightnessLabel = nil;
 	self.lightnessSlider = nil;
+	self.averageColorLabel = nil;
+	self.averageColorSlider = nil;
+	self.averageColorView = nil;
+	self.overlay = nil;
 }
 
 - (void)dealloc {
@@ -48,6 +55,10 @@
 	[saturationSlider release];
 	[lightnessLabel release];
 	[lightnessSlider release];
+	[averageColorLabel release];
+	[averageColorSlider release];
+	[averageColorView release];
+	[overlay release];
     [super dealloc];
 }
 
@@ -57,7 +68,10 @@
 	hueLabel.text = [NSString stringWithFormat:@"%.1f", hueSlider.value];
 	saturationLabel.text = [NSString stringWithFormat:@"%.1f", saturationSlider.value];
 	lightnessLabel.text = [NSString stringWithFormat:@"%.1f", lightnessSlider.value];
+	averageColorLabel.text = [NSString stringWithFormat:@"%.1f", averageColorSlider.value];
 	imageView.image = [image imageByAdjustingHue:hueSlider.value saturation:saturationSlider.value lightness:lightnessSlider.value];
+	overlay.radius = averageColorSlider.value;
+	averageColorView.backgroundColor = [imageView.image averageColorAtPixel:overlay.center radius:overlay.radius];
 }
 
 @end

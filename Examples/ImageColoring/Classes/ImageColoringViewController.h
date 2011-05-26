@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class ImageColoringCircleOverlay;
+
 @interface ImageColoringViewController : UIViewController {
 	UIImage * image;
 	UIImageView * imageView;
@@ -17,6 +19,10 @@
 	UISlider * saturationSlider;
 	UILabel * lightnessLabel;
 	UISlider * lightnessSlider;
+	UILabel * averageColorLabel;
+	UISlider * averageColorSlider;
+	UIView * averageColorView;
+	ImageColoringCircleOverlay * overlay;
 }
 
 @property (nonatomic, retain) UIImage * image;
@@ -28,6 +34,10 @@
 @property (nonatomic, retain) IBOutlet UISlider * saturationSlider;
 @property (nonatomic, retain) IBOutlet UILabel * lightnessLabel;
 @property (nonatomic, retain) IBOutlet UISlider * lightnessSlider;
+@property (nonatomic, retain) IBOutlet UILabel * averageColorLabel;
+@property (nonatomic, retain) IBOutlet UISlider * averageColorSlider;
+@property (nonatomic, retain) IBOutlet UIView * averageColorView;
+@property (nonatomic, retain) IBOutlet ImageColoringCircleOverlay * overlay;
 
 - (IBAction) sliderChanged;
 

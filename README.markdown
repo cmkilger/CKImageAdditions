@@ -10,6 +10,7 @@ CKImageAdditions is a collection of additional functions and methods for working
 * Creating a new UIImage by rounding the corners
 * Creating a new UIImage by trimming the sides based on transparency or a color
 * Creating a new bitmap CGContextRef from a CGImageRef
+* Get the average color within the specified radius of a pixel
 
 ##Usage
 

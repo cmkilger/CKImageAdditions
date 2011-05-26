@@ -18,6 +18,7 @@
 		8B70132912F87A740048371B /* prince_angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B70132712F87A740048371B /* prince_angry.png */; };
 		8B70132A12F87A740048371B /* prince_angry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B70132812F87A740048371B /* prince_angry@2x.png */; };
 		9A12A81E13888E1A0029554D /* libImageAdditions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A12A81D13888E1A0029554D /* libImageAdditions.a */; };
+		9A12A857138E15B10029554D /* ImageColoringCircleOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A12A856138E15B10029554D /* ImageColoringCircleOverlay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		8B70132812F87A740048371B /* prince_angry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince_angry@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ImageColoring-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ImageColoring-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9A12A81D13888E1A0029554D /* libImageAdditions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libImageAdditions.a; sourceTree = SOURCE_ROOT; };
+		9A12A855138E15B10029554D /* ImageColoringCircleOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageColoringCircleOverlay.h; sourceTree = "<group>"; };
+		9A12A856138E15B10029554D /* ImageColoringCircleOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageColoringCircleOverlay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 				1D3623250D0F684500981E51 /* ImageColoringAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* ImageColoringViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* ImageColoringViewController.m */,
+				9A12A855138E15B10029554D /* ImageColoringCircleOverlay.h */,
+				9A12A856138E15B10029554D /* ImageColoringCircleOverlay.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ImageColoringAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ImageColoringViewController.m in Sources */,
+				9A12A857138E15B10029554D /* ImageColoringCircleOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

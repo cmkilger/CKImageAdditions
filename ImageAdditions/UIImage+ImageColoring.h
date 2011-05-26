@@ -26,13 +26,22 @@
 @interface UIImage (ImageColoring)
 
 /*!
-    @method     
-    @abstract   Creates a new image by adjusting the hue, saturation and lightness
-    @param      hue         The ammount to adjust the hue, in degrees.
-    @param      saturation  The ammount to adjust the saturation, +/- 100.
-    @param      lightness   The ammount to adjust the lightness, +/- 100.
-    @return     The adjusted image.
-*/
+ @method     
+ @abstract   Creates a new image by adjusting the hue, saturation and lightness
+ @param      hue         The ammount to adjust the hue, in degrees.
+ @param      saturation  The ammount to adjust the saturation, +/- 100.
+ @param      lightness   The ammount to adjust the lightness, +/- 100.
+ @return     The adjusted image.
+ */
 - (UIImage *) imageByAdjustingHue:(CGFloat)hue saturation:(CGFloat)saturation lightness:(CGFloat)lightness;
+
+/*!
+ @method     
+ @abstract   Averages the colors in a circular area of an image.
+ @param      pixel       The center point of the circle
+ @param      radius      The radius of the circle
+ @return     The average color
+ */
+- (UIColor *) averageColorAtPixel:(CGPoint)pixel radius:(CGFloat)radius;
 
 @end
