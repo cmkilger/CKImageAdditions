@@ -179,7 +179,7 @@ static inline void HSLToRGB(CGFloat h, CGFloat s, CGFloat l, CGFloat * r, CGFloa
 }
 
 - (UIColor *) averageColorAtPixel:(CGPoint)pixel radius:(CGFloat)radius {
-	if ([self respondsToSelector:@selector(scale:)]) {
+	if ([self respondsToSelector:@selector(scale)]) {
 		CGFloat scale = [self scale];
 		pixel = CGPointMake(pixel.x*scale, pixel.y*scale);
 		radius *= scale;
