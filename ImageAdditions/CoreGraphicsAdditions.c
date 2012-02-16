@@ -46,7 +46,7 @@ CGContextRef CKBitmapContextAndDataCreate(CGSize size, void ** data) {
 	
 	void * bitmapData = NULL;
 	if (data) {
-		bitmapData = malloc(size.width*size.height*4);
+		bitmapData = calloc(1, size.width*size.height*4);
 		*data = bitmapData;
 	}
 	
