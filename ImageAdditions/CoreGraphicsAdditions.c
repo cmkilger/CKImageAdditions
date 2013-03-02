@@ -30,6 +30,12 @@
 #include <stdio.h>
 #include <math.h>
 
+#define kNumberOfComponents (4)
+#define kBytesPerComponent (8)
+#define kBytesPerPixel (kNumberOfComponents)
+
+typedef struct Pixel { uint8_t r, g, b, a; } Pixel;
+
 #pragma mark -
 #pragma mark Contexts
 
@@ -44,17 +50,18 @@ CGContextRef CKBitmapContextAndDataCreate(CGSize size, void ** data) {
 		return NULL;
 	}
 	
-	void * bitmapData = NULL;
-	if (data) {
-		bitmapData = calloc(1, size.width*size.height*4);
-		*data = bitmapData;
-	}
-	
+	uint8_t *bitmapData = NULL;
+    if (data)
+    {
+        bitmapData = (uint8_t *)calloc((size_t)(size.width * size.height * kNumberOfComponents), sizeof(uint8_t));
+        *data = bitmapData;
+    }
+    
 	CGContextRef context = CGBitmapContextCreate(bitmapData,
-												 size.width,
-												 size.height,
-												 8,
-												 size.width * 4,
+												 (size_t)size.width,
+												 (size_t)size.height,
+												 kBytesPerComponent,
+												 (size_t)size.width * kBytesPerPixel,
 												 colorSpace,
 												 kCGImageAlphaPremultipliedLast);
 	CGColorSpaceRelease(colorSpace);
@@ -141,7 +148,7 @@ CGImageRef CKImageCreateByTrimmingTransparency(CGImageRef image, CKImageTrimming
 	void * bitmapData = NULL;
 	CGContextRef context = CKBitmapContextAndDataCreateWithImage(image, &bitmapData);
 	
-	UInt32 * data = bitmapData;
+	Pixel *data = bitmapData;
 		
 	size_t width = CGBitmapContextGetWidth(context);
 	size_t height = CGBitmapContextGetHeight(context);
@@ -155,7 +162,9 @@ CGImageRef CKImageCreateByTrimmingTransparency(CGImageRef image, CKImageTrimming
 	if (sides & CKImageTrimmingSidesLeft) {
 		for (size_t x = 0; x < width; x++) {
 			for (size_t y = 0; y < height; y++) {
-				if ((data[y*width+x] & 0x000000ff) != 0x00000000) {
+                Pixel pixel = data[y * width + x];
+                
+                if (pixel.a != 0x00) {
 					left = x;
 					goto SCAN_TOP;
 				}
@@ -168,7 +177,9 @@ SCAN_TOP:
 	if (sides & CKImageTrimmingSidesTop) {
 		for (size_t y = 0; y < height; y++) {
 			for (size_t x = 0; x < width; x++) {
-				if ((data[y*width+x] & 0x000000ff) != 0x00000000) {
+                Pixel pixel = data[y * width + x];
+                
+                if (pixel.a != 0x00) {
 					top = y;
 					goto SCAN_RIGHT;
 				}
@@ -181,7 +192,9 @@ SCAN_RIGHT:
 	if (sides & CKImageTrimmingSidesRight) {
 		for (size_t x = width-1; x >= left; x--) {
 			for (size_t y = 0; y < height; y++) {
-				if ((data[y*width+x] & 0x000000ff) != 0x00000000) {
+                Pixel pixel = data[y * width + x];
+                
+                if (pixel.a != 0x00) {
 					right = x;
 					goto SCAN_BOTTOM;
 				}
@@ -194,7 +207,9 @@ SCAN_BOTTOM:
 	if (sides & CKImageTrimmingSidesBottom) {
 		for (size_t y = height-1; y >= top; y--) {
 			for (size_t x = 0; x < width; x++) {
-				if ((data[y*width+x] & 0x000000ff) != 0x00000000) {
+                Pixel pixel = data[y * width + x];
+                
+                if (pixel.a != 0x00) {
 					bottom = y;
 					goto FINISH;
 				}
