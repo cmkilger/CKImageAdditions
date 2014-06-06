@@ -223,7 +223,7 @@ FINISH:
 	
 	void * newData = NULL;
 	CGContextRef newContext = CKBitmapContextAndDataCreate(CGSizeMake(right-left+1, bottom-top+1), &newData);
-	CGRect rect = CGRectMake(-1.0*left, -1.0*(height-bottom), width, height);
+	CGRect rect = CGRectMake(-1.0*left, -1.0*(height-bottom-1), width, height);
 	CGContextDrawImage(newContext, rect, image);
 	CGImageRef newImage = CGBitmapContextCreateImage(newContext);
 	CGContextRelease(newContext);
