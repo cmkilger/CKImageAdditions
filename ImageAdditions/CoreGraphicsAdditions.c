@@ -154,9 +154,9 @@ CGImageRef CKImageCreateByTrimmingTransparency(CGImageRef image, CKImageTrimming
 	size_t height = CGBitmapContextGetHeight(context);
 	
 	size_t top = 0;
-	size_t bottom = height;
+	size_t bottom = height-1;
 	size_t left = 0;
-	size_t right = width;
+	size_t right = width-1;
 	
 	// Scan the left
 	if (sides & CKImageTrimmingSidesLeft) {
