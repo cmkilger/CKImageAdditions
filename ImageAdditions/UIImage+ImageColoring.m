@@ -24,7 +24,7 @@
 #import "UIImage+ImageColoring.h"
 #import "CoreGraphicsAdditions.h"
 
-static inline unsigned long RGBToUInt32(int r, int g, int b, int a) {
+static inline UInt32 RGBToUInt32(int r, int g, int b, int a) {
 	return (a << 24) | (b << 16) | (g << 8) | r;
 }
 
@@ -203,8 +203,8 @@ static inline void HSLToRGB(CGFloat h, CGFloat s, CGFloat l, CGFloat * r, CGFloa
 	
 	CGFloat radiusSquared = radius*radius;
 	
-    for (int x = minX; x <= maxX; x++) {
-        for (int y = minY; y <= maxY; y++) {
+    for (size_t x = minX; x <= maxX; x++) {
+        for (size_t y = minY; y <= maxY; y++) {
 			CGFloat dx = x-pixel.x;
 			CGFloat dy = y-pixel.y;
 			if (dx*dx+dy*dy > radiusSquared)
