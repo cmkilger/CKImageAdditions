@@ -214,16 +214,19 @@ static inline void HSLToRGB(CGFloat h, CGFloat s, CGFloat l, CGFloat * r, CGFloa
 			UInt32 color = data[index];
 			int rInt, gInt, bInt, aInt;
 			UInt32ToRGB(color, &rInt, &gInt, &bInt, &aInt);
-			CGFloat h, s, l;
-			CGFloat r = rInt/255.0, g = gInt/255.0, b = bInt/255.0;
-			RGBToHSL(r, g, b, &h, &s, &l);
-			
-			totalH += h;
-			totalS += s;
-			totalL += l;
-			totalA += aInt/255.0;
-			
-			count++;
+            
+            if (aInt > 0) {
+                CGFloat h, s, l;
+                CGFloat r = rInt/255.0, g = gInt/255.0, b = bInt/255.0;
+                RGBToHSL(r, g, b, &h, &s, &l);
+                
+                totalH += h;
+                totalS += s;
+                totalL += l;
+                totalA += aInt/255.0;
+                
+                count++;
+            }
 		}
     }
 	
