@@ -44,4 +44,13 @@
  */
 - (UIColor *) averageColorAtPixel:(CGPoint)pixel radius:(CGFloat)radius;
 
+/*!
+ @method
+ @abstract   Replaces a color with another
+ @param      old       The old color to be replaced
+ @param      new       The new color
+ @return     The new image
+ */
+- (UIImage *)imageByReplacingColor:(UIColor *)old withColor:(UIColor *)new;
+
 @end

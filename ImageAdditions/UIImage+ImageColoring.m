@@ -24,7 +24,7 @@
 #import "UIImage+ImageColoring.h"
 #import "CoreGraphicsAdditions.h"
 
-static inline UInt32 RGBToUInt32(int r, int g, int b, int a) {
+static inline unsigned long RGBToUInt32(int r, int g, int b, int a) {
 	return (a << 24) | (b << 16) | (g << 8) | r;
 }
 
@@ -234,6 +234,50 @@ static inline void HSLToRGB(CGFloat h, CGFloat s, CGFloat l, CGFloat * r, CGFloa
 	HSLToRGB(totalH/count, totalS/count, totalL/count, &r, &g, &b);
 	
 	return [UIColor colorWithRed:r green:g blue:b alpha:totalA/count];
+}
+
+- (UIImage *)imageByReplacingColor:(UIColor *)old withColor:(UIColor *)new {
+    void * bitmapData = NULL;
+    CGContextRef context = CKBitmapContextAndDataCreateWithImage([self CGImage], &bitmapData);
+    
+    UInt32 * data = bitmapData;
+    size_t width = CGBitmapContextGetWidth(context);
+    
+    CGFloat rf, gf, bf, af;
+    [old getRed:&rf green:&gf blue:&bf alpha:&af];
+    int rOld = rf*255, gOld = gf*255, bOld = bf*255, aOld = af*255;
+    
+    [new getRed:&rf green:&gf blue:&bf alpha:&af];
+    int rNew = rf*255, gNew = gf*255, bNew = bf*255, aNew = af*255;
+    UInt32 newUInt32 = (UInt32)RGBToUInt32(rNew, gNew, bNew, aNew);
+    
+    int tolerance = 100;
+    
+    for (int x = 0, l = self.size.width; x < l; x++) {
+        for (int y = 0, m = self.size.height; y < m; y++) {
+            NSUInteger index = y*width+x;
+            UInt32 color = data[index];
+            int rInt, gInt, bInt, aInt;
+            UInt32ToRGB(color, &rInt, &gInt, &bInt, &aInt);
+            
+            if (abs(rInt-rOld) < tolerance && abs(gInt-gOld) < tolerance && abs(bInt-bOld) < tolerance && abs(aInt-aOld) < tolerance) {
+                data[index] = newUInt32;
+            }
+        }
+    }
+    
+    CGImageRef newImage = CGBitmapContextCreateImage(context);
+    UIImage * image = nil;
+    if ([[UIImage class] respondsToSelector:@selector(imageWithCGImage:scale:orientation:)])
+        image = [UIImage imageWithCGImage:newImage scale:[self scale] orientation:UIImageOrientationUp];
+    else
+        image = [UIImage imageWithCGImage:newImage];
+    
+    CGImageRelease(newImage);
+    CGContextRelease(context);
+    free(bitmapData);
+    
+    return image;
 }
 
 @end
