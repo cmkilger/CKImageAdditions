@@ -54,9 +54,9 @@ static inline void RGBToHSL(CGFloat r, CGFloat g, CGFloat b, CGFloat * h, CGFloa
 	else
 		*s = (maxcolor - mincolor)/(2.0 - maxcolor - mincolor);
 	
-	if (r > g && r > b)
+	if (r >= g && r >= b)
 		*h = (g - b)/(maxcolor - mincolor);
-	else if (g > r && g > b)
+	else if (g >= r && g >= b)
 		*h = 2.0 + (b - r)/(maxcolor - mincolor);
 	else
 		*h = 4.0 + (r - g)/(maxcolor - mincolor);
