@@ -1,8 +1,8 @@
-#CKImageAdditions
+# CKImageAdditions
 
 CKImageAdditions is a collection of additional functions and methods for working with Core Graphics and UIImages on iOS 3.0+.
 
-##Features
+## Features
 
 * Creating a new UIImage by blending one over another using one of many blend modes
 * Creating a new UIImage by adjusting the hue, saturation and lightness
@@ -12,11 +12,11 @@ CKImageAdditions is a collection of additional functions and methods for working
 * Creating a new bitmap CGContextRef from a CGImageRef
 * Get the average color within the specified radius of a pixel
 
-##Usage
+## Usage
 
 Copy the ImageAdditions folder into your project, then #import the CKImageAdditions.h header file.  Please refer to the examples for more information.
 
-##License
+## License
 
 CKImageAdditions is licensed under the MIT license, which is reproduced in its entirety here:
 
