@@ -1,20 +1,47 @@
 # CKImageAdditions
 
-CKImageAdditions is a collection of additional functions and methods for working with Core Graphics and UIImages on iOS 3.0+.
+CKImageAdditions is a collection of additional functions and methods for working with Core Graphics and UIImages on iOS.
 
 ## Features
 
-* Creating a new UIImage by blending one over another using one of many blend modes
-* Creating a new UIImage by adjusting the hue, saturation and lightness
-* Creating a new UIImage by resizing to fit in a specified CGSize using a content mode (any but redraw)
-* Creating a new UIImage by rounding the corners
-* Creating a new UIImage by trimming the sides based on transparency or a color
-* Creating a new bitmap CGContextRef from a CGImageRef
-* Get the average color within the specified radius of a pixel
+* Blend one image over another using various blend modes
+* Adjust hue, saturation, and lightness
+* Resize to fit a CGSize using any content mode (except redraw)
+* Round corners
+* Trim sides based on transparency or a specific color
+* Create a bitmap CGContext from a CGImage
+* Get the average color within a specified radius of a pixel
+
+## Installation
+
+Add the package to your project using Swift Package Manager:
+
+```
+https://github.com/cmkilger/CKImageAdditions
+```
 
 ## Usage
 
-Copy the ImageAdditions folder into your project, then #import the CKImageAdditions.h header file.  Please refer to the examples for more information.
+```swift
+import CKImageAdditions
+
+// Blend images
+let blended = baseImage.blending(with: overlayImage, blendMode: .multiply)
+
+// Adjust colors
+let adjusted = image.adjustingHue(0.5, saturation: 1.0, lightness: 0.0)
+
+// Resize
+let resized = image.resizing(to: CGSize(width: 100, height: 100), contentMode: .scaleAspectFit)
+
+// Round corners
+let rounded = image.roundingCorners(withRadius: 10)
+
+// Trim transparency
+let trimmed = image.trimmingTransparency()
+```
+
+See the Examples app for more demonstrations.
 
 ## License
 
