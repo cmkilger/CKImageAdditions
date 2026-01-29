@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CKImageAdditions"
-  s.version      = "2.0.0"
+  s.version      = "2.0.1"
   s.summary      = "Additional functions and methods for working with Core Graphics and UIImages on iOS."
   s.homepage     = "https://github.com/cmkilger/CKImageAdditions"
   s.license      = 'MIT'
